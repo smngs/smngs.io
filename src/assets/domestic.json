@@ -1,0 +1,56 @@
+[
+  {
+    "authors": [
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
+    "title": "IPFS 階層符号ビデオストリーミングにおけるコンテンツプリフェッチ",
+    "url": "https://ken.ieice.org/ken/paper/20250124hcHw/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "大阪",
+    "date": "2025-01-24",
+    "note": "奨励講演, 電子情報通信学会ネットワークシステム研究会 若手研究奨励賞"
+  },
+  {
+    "authors": [
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "足立 匠", "me": false },
+      { "name": "萬代 雅希", "me": false }
+    ],
+    "title": "階層符号化を用いた IPFS ビデオストリーミングにおけるコンテンツプリフェッチの性能評価",
+    "url": "https://ken.ieice.org/ken/paper/20240718TcEF/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "札幌",
+    "date": "2024-07-18",
+    "note": null
+  },
+  {
+    "authors": [
+      { "name": "足立 匠", "me": false },
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
+    "title": "再生速度を考慮したアダプティブビデオストリーミング",
+    "url": "https://ken.ieice.org/ken/paper/20240718zcEF/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "札幌",
+    "date": "2024-07-18",
+    "note": null
+  },
+  {
+    "authors": [
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
+    "title": "経路情報のプリフェッチを適用した IPFS ビデオストリーミング",
+    "url": "https://pub.confit.atlas.jp/ja/event/general2024/presentation/B-6-83",
+    "book_name": "電子情報通信学会 総合大会",
+    "presentation_format": null,
+    "place": "広島",
+    "date": "2024-03-07",
+    "note": null
+  }
+]

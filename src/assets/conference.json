@@ -1,0 +1,28 @@
+[
+  {
+    "authors": [
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
+    "title": "Content Prefetching Method for Scalable Video Coding in IPFS",
+    "url": "https://ieeexplore.ieee.org/document/10930214",
+    "book_name": "In Proc. of IEEE International Conference on Consumer Electronics (IEEE ICCE 2025)",
+    "presentation_format": null,
+    "place": "Las Vegas, USA",
+    "date": "2025-01-13",
+    "note": "Best Session Presentation Award"
+  },
+  {
+    "authors": [
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
+    "title": "Evaluation of Prefetching Method for Routing Information in IPFS Video Streaming",
+    "url": "https://www.ieice.org/publications/proceedings/summary.php?iconf=ICETC&session_num=P2&number=P2-17&year=2024",
+    "book_name": "In Proc. of 2024 International Conference on Emerging Technologies for Communications (IEICE ICETC 2024)",
+    "presentation_format": "Poster",
+    "place": "Kitakyushu, Japan",
+    "date": "2024-11-25",
+    "note": "Best Student Award"
+  }
+]

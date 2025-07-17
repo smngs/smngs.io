@@ -1,3 +1,36 @@
+---
+import conferences from "../assets/conference.json"
+import educations from "../assets/education.json"
+import domestics from "../assets/domestic.json"
+import awards from "../assets/award.json"
+
+function formatToMonthYear(dateStr) {
+const date = new Date(dateStr);
+const parts = new Intl.DateTimeFormat('en-US', {
+year: 'numeric',
+month: 'short',
+}).formatToParts(date);
+
+const month = parts.find(p => p.type === 'month')?.value;
+const year  = parts.find(p => p.type === 'year')?.value;
+
+return `${month}. ${year}`;
+}
+
+function formatToMonthYearJP(dateStr) {
+const date = new Date(dateStr);
+const parts = new Intl.DateTimeFormat('en-US', {
+year: 'numeric',
+month: 'numeric',
+}).formatToParts(date);
+
+const month = parts.find(p => p.type === 'month')?.value;
+const year  = parts.find(p => p.type === 'year')?.value;
+
+return `${year} 年 ${month} 月`;
+}
+---
+
 <div class="container">
   <div class="simple-header">
     <div class="header-left">
@@ -25,30 +58,15 @@
   <div class="education">
     <h2>Education</h2>
     <ul class="education-list">
+      { educations.map(education => (
       <li>
         <div class="line">
-          <span class="date">2024 ~ </span> 
-          <span class="text">上智大学大学院 理工学研究科 理工学専攻 情報学領域 博士後期課程</span>
+          <span class="date">{education.from_year} ~ {education.to_year}</span> 
+          <span class="text">{education.topic}</span>
         </div>
       </li>
-      <li>
-        <div class="line">
-          <span class="date">2024 ~ </span> 
-          <span class="text">上智大学 理工学部 研究補助員</span>
-        </div>
-      </li>
-      <li>
-        <div class="line">
-          <span class="date">2022 ~ 2024</span> 
-          <span class="text">上智大学大学院 理工学研究科 理工学専攻 情報学領域 博士前期課程</span>
-        </div>
-      </li>
-      <li>
-        <div class="line">
-          <span class="date">2019 ~ 2022</span> 
-          <span class="text">上智大学 理工学部 情報理工学科</span>
-        </div>
-      </li>
+      ))
+      }
     </ul>
   </div>
 
@@ -57,27 +75,73 @@
     <div class="conference">
       <h3>Conference Proceedings</h3>
       <ol>
-        <li><span class="author">Shota Minegishi</span> and Masaki Bandai, "<a href="https://ieeexplore.ieee.org/document/10930214">Content Prefetching Method for Scalable Video Coding in IPFS</a>", In Proc. of IEEE International Conference on Consumer Electronics (IEEE ICCE 2025), Las Vegas, USA, Jan. 2025 (Best Session Presentation Award).</li>
-        <li><span class="author">Shota Minegishi</span> and Masaki Bandai, "<a href="https://doi.org/10.34385/proc.85.P2-17">Evaluation of Prefetching Method for Routing Information in IPFS Video Streaming</a>", In Proc. of 2024 International Conference on Emerging Technologies for Communications (IEICE ICETC 2024), Poster, Kitakyushu, Japan, Nov. 2024 (Best Student Award).</li>
+        {conferences.map((conference, cIdx) => (
+        <li key={cIdx}>
+          <span>
+            {conference.authors.map((author, i) => (
+            <span key={i}>
+              {author.me ? (
+              <span class="author">{author.name}</span>
+              ) : (
+              author.name
+              )}{i !== conference.authors.length - 1 ? ' and ' : ', '}
+            </span>
+            ))}
+            "<a href={conference.url}>{conference.title}</a>", 
+            {conference.book_name},
+            {conference.presentation_format != null && (<>{conference.presentation_format}, </>)}
+            {conference.place}, 
+            {formatToMonthYear(conference.date)}{conference.note != null ? (<span>, ({conference.note}).</span>) : (<span>.</span>)}
+          </span>
+        </li>
+        ))}
       </ol>
     </div>
 
     <div class="domestic">
       <h3>Presentations (in Japanese)</h3>
       <ol>
-        <li><span class="author">峯岸 聖太</span>, 萬代 雅希, "<a href="https://ken.ieice.org/ken/paper/20250124hcHw/">IPFS 階層符号ビデオストリーミングにおけるコンテンツプリフェッチ</a>", 電子情報通信学会 ネットワークシステム研究会, 大阪, 2025 年 1 月 (奨励講演, 電子情報通信学会ネットワークシステム研究会 若手研究奨励賞).</li>
-        <li><span class="author">峯岸 聖太</span>, 足立 匠, 萬代 雅希, "<a href="https://ken.ieice.org/ken/paper/20240718TcEF/">階層符号化を用いた IPFS ビデオストリーミングにおけるコンテンツプリフェッチの性能評価</a>", 電子情報通信学会 ネットワークシステム研究会, 札幌, 2024 年 7 月.</li>
-        <li>足立 匠, <span class="author">峯岸 聖太</span>, 萬代 雅希, "<a href="https://ken.ieice.org/ken/paper/20240718zcEF/">再生速度を考慮したアダプティブビデオストリーミング</a>", 電子情報通信学会 ネットワークシステム研究会, 札幌, 2024 年 7 月.</li>
-        <li><span class="author">峯岸 聖太</span>, 萬代 雅希, "<a href="https://pub.confit.atlas.jp/ja/event/general2024/presentation/B-6-83">経路情報のプリフェッチを適用した IPFS ビデオストリーミング</a>", 電子情報通信学会 総合大会, 広島, 2024 年 3 月.</li>
+        {domestics.map((domestic, cIdx) => (
+        <li key={cIdx}>
+          <span>
+            {domestic.authors.map((author, i) => (
+            <span key={i}>
+              {author.me ? (
+              <span class="author">{author.name}</span>
+              ) : (
+              author.name
+              )}, 
+            </span>
+            ))}
+            "<a href={domestic.url}>{domestic.title}</a>", 
+            {domestic.book_name},
+            {domestic.presentation_format != null && (<>{domestic.presentation_format}, </>)}
+            {domestic.place}, 
+            {formatToMonthYearJP(domestic.date)}{domestic.note != null ? (<span>, ({domestic.note}).</span>) : (<span>.</span>)}
+          </span>
+        </li>
+        ))}
       </ol>
     </div>
 
     <div class="Awards">
       <h3>Awards</h3>
       <ol>
-        <li><a href="https://www.ieice.org/cs/ns/jpn/wakate-awards.html">電子情報通信学会ネットワークシステム研究会 若手研究奨励賞</a>, 2025 年 1 月, <a href="https://fst.sophia.ac.jp/news/20250313/post-9670">所属機関発表</a>.</li>
-        <li><a href="https://icce.org/2025/awards/">IEEE 43rd International Conference on Consumer Electronics (IEEE ICCE 2025) Best Session Presentation Award</a>, Jan. 2025, <a href="https://fst.sophia.ac.jp/news/20250313/post-9666">Press Release</a>.</li>
-        <li><a href="https://www.ieice.org/cs/icetc/2024/awards.html">The 5th IEICE-CS International Conference on Emerging Technologies for Communications (IEICE ICETC 2024) Best Student Award</a>, Nov. 2024, <a href="https://fst.sophia.ac.jp/news/20250313/post-9663">Press Release</a>.</li>
+        {awards.map((award) => (
+        <li>
+          <span>
+            <a href={award.url}>{award.name}</a>, 
+            {award.lang === "ja"
+            ? <span>{formatToMonthYearJP(award.date)}</span>
+            : <span>{formatToMonthYear(award.date)}</span>
+            }{award.press_url ?(
+            award.lang === "ja"
+            ? <span>, <a href={award.press_url}>所属機関発表</a>.</span>
+            : <span>, <a href={award.press_url}>Press Release</a>.</span>
+            ) : <>.</>}
+          </span>
+        </li>
+        ))}
       </ol>
     </div>
   </div>
@@ -189,7 +253,7 @@
   }
 
   .publications ol
-  {
+    {
     padding-left: 2.5em;
     list-style-type: disc;
   }
