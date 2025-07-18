@@ -1,0 +1,47 @@
+---
+import educations from "../assets/education.json"
+---
+
+<div class="education">
+  <h2>Education</h2>
+  <ul class="education-list">
+    { educations.map(education => (
+    <li>
+      <div class="line">
+        <span class="date">{education.from_year} ~ {education.to_year}</span> 
+        <span class="text">{education.topic}</span>
+      </div>
+    </li>
+    ))
+    }
+  </ul>
+</div>
+
+<style>
+  .education .education-list {
+    padding-left: 1.5em;
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0;
+  }
+
+  .education .education-list li {
+    position: relative;
+    align-items: flex-start;
+    margin-bottom: 1em;
+  }
+
+  .education .education-list .line {
+    display: flex;
+    gap: 1em;
+  }
+
+  .education .education-list .line .date {
+    flex: 0 0 7em;
+    font-weight: bold;
+    margin-right: 0.25em;
+  }
+
+  .education .education-list .line .text {
+  }
+</style>

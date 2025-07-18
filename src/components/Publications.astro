@@ -1,0 +1,110 @@
+---
+import conferences from "../assets/conference.json"
+import domestics from "../assets/domestic.json"
+import awards from "../assets/award.json"
+
+import { formatToMonthYear, formatToMonthYearJP } from "./utils.js";
+---
+
+<div class="publications">
+  <h2>Publications</h2>
+  <div class="conference">
+    <h3>Conference Proceedings</h3>
+    <ol>
+      {conferences.map((conference, cIdx) => (
+      <li key={cIdx}>
+        <span>
+          {conference.authors.map((author, i) => (
+          <span key={i}>
+            {author.me ? (
+            <span class="author">{author.name}</span>
+            ) : (
+            author.name
+            )}{i !== conference.authors.length - 1 ? ' and ' : ', '}
+          </span>
+          ))}
+          "<a href={conference.url}>{conference.title}</a>", 
+          {conference.book_name},
+          {conference.presentation_format != null && (<>{conference.presentation_format}, </>)}
+          {conference.place}, 
+          {formatToMonthYear(conference.date)}{conference.note != null ? (<span>, ({conference.note}).</span>) : (<span>.</span>)}
+        </span>
+      </li>
+      ))}
+    </ol>
+  </div>
+
+  <div class="domestic">
+    <h3>Presentations (in Japanese)</h3>
+    <ol>
+      {domestics.map((domestic, cIdx) => (
+      <li key={cIdx}>
+        <span>
+          {domestic.authors.map((author, i) => (
+          <span key={i}>
+            {author.me ? (
+            <span class="author">{author.name}</span>
+            ) : (
+            author.name
+            )}, 
+          </span>
+          ))}
+          "<a href={domestic.url}>{domestic.title}</a>", 
+          {domestic.book_name},
+          {domestic.presentation_format != null && (<>{domestic.presentation_format}, </>)}
+          {domestic.place}, 
+          {formatToMonthYearJP(domestic.date)}{domestic.note != null ? (<span>, ({domestic.note}).</span>) : (<span>.</span>)}
+        </span>
+      </li>
+      ))}
+    </ol>
+  </div>
+
+  <div class="Awards">
+    <h3>Awards</h3>
+    <ol>
+      {awards.map((award) => (
+      <li>
+        <span>
+          <a href={award.url}>{award.name}</a>, 
+          {award.lang === "ja"
+          ? <span>{formatToMonthYearJP(award.date)}</span>
+          : <span>{formatToMonthYear(award.date)}</span>
+          }{award.press_url ?(
+          award.lang === "ja"
+          ? <span>, <a href={award.press_url}>所属機関発表</a>.</span>
+          : <span>, <a href={award.press_url}>Press Release</a>.</span>
+          ) : <>.</>}
+        </span>
+      </li>
+      ))}
+    </ol>
+  </div>
+</div>
+
+<style>
+  .publications {
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+
+  .publications ol
+    {
+    padding-left: 2.5em;
+    list-style-type: disc;
+  }
+
+  .publications ol > li {
+    list-style-position: outside;
+  }
+
+  .publications a {
+    color: #2f2f2f;
+    text-decoration: underline;
+  }
+
+  .author {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>

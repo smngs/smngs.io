@@ -1,15 +1,19 @@
 ---
-import "../assets/milligram.css"
+import { SEO } from "astro-seo";
+import { GoogleFontsOptimizer } from 'astro-google-fonts-optimizer';
+import "../assets/container.css"
+import "../assets/custom.css"
 ---
 
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap" />
+    <SEO
+        title="Shota Minegishi (@smngs)",
+        decription = "Shota Minegishi (@smngs)",
+    />
     <title>Shota Minegishi (@smngs)</title>
   </head>
   <body>
