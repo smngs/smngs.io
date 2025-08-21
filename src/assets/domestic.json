@@ -4,6 +4,47 @@
       { "name": "峯岸 聖太", "me": true },
       { "name": "萬代 雅希", "me": false }
     ],
+    "title": "IPFS/HTTP ゲートウェイにおける動画セグメントの事前経路探索手法に関する検討",
+    "url": "https://ken.ieice.org/ken/paper/202510090cNU/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "京都",
+    "date": "2025-10-09",
+    "note": "発表予定"
+  },
+  {
+    "authors": [
+      { "name": "足立 匠", "me": false },
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
+    "title": "再生速度を考慮した階層符号化動画ストリーミングの検討",
+    "url": "https://ken.ieice.org/ken/paper/20251008jcNU/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "京都",
+    "date": "2025-10-08",
+    "note": "発表予定"
+  },
+  {
+    "authors": [
+      { "name": "陶 辰麒", "me": false },
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
+    "title": "IoT における連携型パケットレベル侵入検知システムの検討",
+    "url": "https://ken.ieice.org/ken/paper/20251010FcNU/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "京都",
+    "date": "2025-10-10",
+    "note": "発表予定"
+  },
+  {
+    "authors": [
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
     "title": "IPFS 階層符号ビデオストリーミングにおけるコンテンツプリフェッチ",
     "url": "https://ken.ieice.org/ken/paper/20250124hcHw/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
