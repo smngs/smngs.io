@@ -1,13 +1,20 @@
 <div class="simple-header">
   <div class="header-left">
     <div class="name">峯岸 聖太</div>
-    <div class="eng-name">Shota Minegishi (@smngs)</div>
-    <a href="https://github.com/smngs">
+    <div class="eng-name">Shota Minegishi</div>
+    <div class="badges">
+      <a href="https://github.com/smngs">
+        <span class="badge">
+          <span class="fab fa-github fa-sm"></span>
+          @smngs
+        </span>
+      </a>
       <span class="badge">
-        <span class="fab fa-github fa-sm"></span>
-        GitHub
+        <span class="fas fa-envelope fa-sm">
+        </span>
+        smngs [at] smngs.io
       </span>
-    </a>
+    </div>
   </div>
   <div class="header-right">
     <img src="/favicon.png" class="icon" alt="@smngs's Logo.">
@@ -34,12 +41,15 @@
     min-width: 0;
   }
 
+  .simple-header .badges {
+    margin-top: 0.5em;
+  }
+
   .simple-header .badge {
     display: inline-block;
     background-color: #5e5e5e;
     color: white;
     padding: 10px 8px;
-    margin-top: 2em;
     font-size: 12px;
     border-radius: 5px;
     font-weight: bold;
