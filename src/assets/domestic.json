@@ -32,7 +32,7 @@
       { "name": "峯岸 聖太", "me": true },
       { "name": "萬代 雅希", "me": false }
     ],
-    "title": "IoT における連携型パケットレベル侵入検知システムの検討",
+    "title": "IoT におけるパケットレベル侵入検知システムの実装と評価",
     "url": "https://ken.ieice.org/ken/paper/20251010FcNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
     "presentation_format": null,
