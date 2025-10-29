@@ -1,4 +1,5 @@
 ---
+import journals from "../assets/journal.json"
 import conferences from "../assets/conference.json"
 import domestics from "../assets/domestic.json"
 import awards from "../assets/award.json"
@@ -8,6 +9,30 @@ import { formatToMonthYear, formatToMonthYearJP } from "./utils.js";
 
 <div class="publications">
   <h2>Publications</h2>
+  <div class="conference">
+    <h3>Journal Paper</h3>
+    <ol>
+      {journals.map((journal, cIdx) => (
+      <li key={cIdx}>
+        <span>
+          {journal.authors.map((author, i) => (
+          <span key={i}>
+            {author.me ? (
+            <span class="author">{author.name}</span>
+            ) : (
+            author.name
+            )}{i !== journal.authors.length - 1 ? ' and ' : ', '}
+          </span>
+          ))}
+          <!-- "<a href={journal.url}>{journal.title}</a>" -->
+          "{journal.title}", 
+          {journal.book_name}{journal.note != null ? (<span> ({journal.note}).</span>) : (<span>.</span>)}
+        </span>
+      </li>
+      ))}
+    </ol>
+  </div>
+
   <div class="conference">
     <h3>Conference Proceedings</h3>
     <ol>
@@ -27,7 +52,7 @@ import { formatToMonthYear, formatToMonthYearJP } from "./utils.js";
           {conference.book_name},
           {conference.presentation_format != null && (<>{conference.presentation_format}, </>)}
           {conference.place}, 
-          {formatToMonthYear(conference.date)}{conference.note != null ? (<span>, ({conference.note}).</span>) : (<span>.</span>)}
+          {formatToMonthYear(conference.date)}{conference.note != null ? (<span> ({conference.note}).</span>) : (<span>.</span>)}
         </span>
       </li>
       ))}
@@ -53,7 +78,7 @@ import { formatToMonthYear, formatToMonthYearJP } from "./utils.js";
           {domestic.book_name},
           {domestic.presentation_format != null && (<>{domestic.presentation_format}, </>)}
           {domestic.place}, 
-          {formatToMonthYearJP(domestic.date)}{domestic.note != null ? (<span>, ({domestic.note}).</span>) : (<span>.</span>)}
+          {formatToMonthYearJP(domestic.date)}{domestic.note != null ? (<span> ({domestic.note}).</span>) : (<span>.</span>)}
         </span>
       </li>
       ))}
@@ -105,6 +130,6 @@ import { formatToMonthYear, formatToMonthYearJP } from "./utils.js";
 
   .author {
     font-weight: bold;
-    text-decoration: underline;
+    /* text-decoration: underline;*/
   }
 </style>

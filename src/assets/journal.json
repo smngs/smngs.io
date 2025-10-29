@@ -1,0 +1,12 @@
+[
+  {
+    "authors": [
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
+    "title": "Video Segment Prefetching for IPFS Video Streaming with Scalable Video Coding",
+    "url": "null",
+    "book_name": "IEICE Transactions on Communications",
+    "note": "Accepted"
+  }
+]
