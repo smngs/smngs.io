@@ -14,5 +14,8 @@
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-seo": "^0.8.4",
     "milligram": "^1.4.1"
+  },
+  "devDependencies": {
+    "@astrojs/partytown": "^2.1.4"
   }
 }
