@@ -1,5 +1,50 @@
+:root{
+  --gap: 1rem;
+  --brand: #30a3b3;
+  --max-w: 150rem;
+  --pad-x: 1rem;
+  --header-gap-top: 1rem;
+}
+
+.header-container{
+  background: #fff;
+  padding: var(--gap) 0;
+}
+
+.site-header{
+  position: sticky;
+  top: var(--gap);
+  z-index: 1000;
+
+  background-color: var(--brand);
+  padding: 1rem;
+  border-radius: 10px;
+
+  margin: 0 auto;
+  max-width: var(--max-w);
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+.header-spacer {
+  position: sticky;
+  top: 0;
+  height: var(--header-gap-top);
+  background: #f6f6f6;
+  z-index: 999;
+}
+
+.footer-container {
+  margin: 0 auto;
+  max-width: 150.0rem;
+  padding: 0 2.0rem;
+  width: 100%;
+  height: 72px;
+}
+
 .container {
   margin: 0 auto;
+  top: 1rem;
   max-width: 112.0rem;
   padding: 0 2.0rem;
   position: relative;

@@ -1,0 +1,44 @@
+<header class="header-container site-header" role="banner">
+  <div class="site-header">
+    <nav class="nav">
+      <img src="/favicon.png" class="icon" alt="@smngs's Logo.">
+    </nav>
+  </div>
+</header>
+<div class="header-spacer" aria-hidden="true"></div>
+
+<style>
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+  }
+
+  @media (min-width: 40rem) {
+    .row {
+      flex-direction: row;
+      margin-left: -1.0rem;
+      width: calc(100% + 2.0rem);
+    }
+    .row .column {
+      margin-bottom: inherit;
+      padding: 0 1.0rem;
+    }
+  }
+
+  .icon {
+    width: 2em;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    flex-shrink: 0;
+  }
+
+
+</style>
