@@ -26,7 +26,9 @@ import { formatToMonthYear, formatToMonthYearJP } from "./utils.js";
           ))}
           <!-- "<a href={journal.url}>{journal.title}</a>" -->
           "{journal.title}", 
-          {journal.book_name}{journal.note != null ? (<span> ({journal.note}).</span>) : (<span>.</span>)}
+          {journal.book_name},
+          {journal.bib_info},
+          {formatToMonthYear(journal.date)}{journal.note != null ? (<span> ({journal.note}).</span>) : (<span>.</span>)}
         </span>
       </li>
       ))}
