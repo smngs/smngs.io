@@ -1,22 +1,66 @@
-:root{
+:root {
+  color-scheme: light;
   --gap: 1rem;
   --brand: #30a3b3;
   --max-w: 150rem;
   --pad-x: 1rem;
   --header-gap-top: 1rem;
+  --color-background: #f6f6f6;
+  --color-surface: #ffffff;
+  --color-surface-variant: #f4f5f6;
+  --color-text: #2f2f2f;
+  --color-text-on-brand: #ffffff;
+  --color-border: #2f2f2f;
+  --color-border-subtle: #cccccc;
+  --color-link: #9b4dca;
+  --color-link-hover: #606c76;
+  --color-code-border: #9b4dca;
+  --color-badge: #5e5e5e;
+  --color-badge-hover: #777777;
+  --color-header-background: var(--color-background);
+  --color-header-surface: var(--brand);
+  --color-header-spacer: var(--color-background);
+  --color-footer-border: var(--color-border);
+  --color-footer-text: var(--color-text);
+  --color-hero-text: var(--color-text-on-brand);
+  --color-hero-badge-bg: var(--color-badge);
+  --color-hero-badge-hover: var(--color-badge-hover);
 }
 
-.header-container{
-  background: #fff;
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #121212;
+  --color-surface: #1f1f1f;
+  --color-surface-variant: #2a2a2a;
+  --color-text: #f1f3f5;
+  --color-text-on-brand: #ffffff;
+  --color-border: #3f3f3f;
+  --color-border-subtle: #3a3a3a;
+  --color-link: #c7a9f7;
+  --color-link-hover: #9fbce0;
+  --color-code-border: #7e5cc9;
+  --color-badge: #373737;
+  --color-badge-hover: #4a4a4a;
+  --color-header-background: #121212;
+  --color-header-spacer: #121212;
+  --color-footer-border: #3f3f3f;
+  --color-footer-text: #e8edf2;
+  --color-hero-badge-bg: #2f2f2f;
+  --color-hero-badge-hover: #404040;
+}
+
+.header-container {
+  background: var(--color-header-background);
   padding: var(--gap) 0;
 }
 
-.site-header{
+.site-header {
   position: sticky;
   top: var(--gap);
   z-index: 1000;
 
-  background-color: var(--brand);
+  background-color: var(--color-header-surface);
+  color: var(--color-text-on-brand);
   padding: 1rem;
   border-radius: 10px;
 
@@ -30,7 +74,7 @@
   position: sticky;
   top: 0;
   height: var(--header-gap-top);
-  background: #f6f6f6;
+  background: var(--color-header-spacer);
   z-index: 999;
 }
 

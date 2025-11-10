@@ -12,14 +12,15 @@ html {
 body {
   font-family: "M PLUS 1", sans-serif;
   font-optical-sizing: auto;
-  color: #2f2f2f;
-  background-color: #f6f6f6;
+  color: var(--color-text);
+  background-color: var(--color-background);
   font-weight: 400;
   font-style: normal;
 
   font-size: 1.6em;
   letter-spacing: .01em;
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 b,
@@ -77,7 +78,7 @@ h3::before {
   width: 0.3em;
   height: 1em;
   margin-right: 0.4em;
-  background-color: #30a3b3;
+  background-color: var(--brand);
   border-radius: 0.2em;
   vertical-align: middle;
   position: relative;
@@ -86,7 +87,7 @@ h3::before {
 
 
 code {
-  background: #f4f5f6;
+  background: var(--color-surface-variant);
   border-radius: .4rem;
   font-size: 86%;
   margin: 0 .2rem;
@@ -95,8 +96,8 @@ code {
 }
 
 pre {
-  background: #f4f5f6;
-  border-left: 0.3rem solid #9b4dca;
+  background: var(--color-surface-variant);
+  border-left: 0.3rem solid var(--color-code-border);
   overflow-y: hidden;
 }
 
@@ -108,12 +109,12 @@ pre > code {
 }
 
 a {
-  color: #9b4dca;
+  color: var(--color-link);
   text-decoration: none;
 }
 
 a:focus, a:hover {
-  color: #606c76;
+  color: var(--color-link-hover);
 }
 
 .button,
