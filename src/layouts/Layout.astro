@@ -1,53 +1,34 @@
 ---
-import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import { SEO } from "astro-seo";
-import Footer from "../components/Footer.astro";
+import { GoogleFontsOptimizer } from 'astro-google-fonts-optimizer';
 import Header from "../components/Header.astro";
-import "../assets/container.css";
-import "../assets/custom.css";
+import Footer from "../components/Footer.astro";
+import "../assets/container.css"
+import "../assets/custom.css"
 ---
 
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <GoogleFontsOptimizer
-      url="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap"
-    />
+    <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap" />
 
     <!-- Google tag (gtag.js) -->
-    <script
-      is:inline
-      async
-      type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-FV70F5MH3L"
-    ></script>
+    <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-FV70F5MH3L"></script>
     <script is:inline type="text/partytown">
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-      gtag("config", "G-FV70F5MH3L");
+      gtag('config', 'G-FV70F5MH3L');
     </script>
 
     <link rel="icon" href="/favicon.png" />
-    <meta
-      name="description"
-      content="Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University."
-    />
+    <meta name="description" content="Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University.">
     <SEO
-      title="Shota Minegishi (@smngs)"
-      description="Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University, Japan."
-    />
+      title="Shota Minegishi (@smngs)",
+      description="Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University, Japan.",
+    /> 
     <title>Shota Minegishi (@smngs)</title>
   </head>
   <body>
