@@ -1,22 +1,33 @@
 {
-  "name": "smngs-io",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "ui-nextjs-theme",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev",
+    "build": "next build && next-sitemap",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.1",
-    "astro": "^5.11.0",
-    "astro-google-fonts-optimizer": "^0.2.2",
-    "astro-seo": "^0.8.4",
-    "milligram": "^1.4.1"
+    "@fontsource/m-plus-1": "^5.2.8",
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.3.0",
+    "@smngs/ui": "file:../ui",
+    "gray-matter": "^4.0.3",
+    "next": "16.2.1",
+    "next-mdx-remote": "^6.0.0",
+    "next-sitemap": "^4.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "rehype-slug": "^6.0.0"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^2.1.4",
-    "@playwright/test": "^1.58.2"
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "typescript": "^5"
   }
 }
