@@ -4,35 +4,6 @@
 @import "@fontsource/m-plus-1/500.css";
 @import "@fontsource/m-plus-1/700.css";
 
-html {
-  font-size: 62.5%;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-body {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  line-height: var(--leading-normal);
-  margin: 0;
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-h1, h2, h3 {
-  font-weight: var(--font-medium);
-  letter-spacing: var(--tracking-tight);
-  margin-top: 0;
-}
-
-h1 { font-size: 2.8rem; margin-bottom: 0.25em; }
-h2 { font-size: 2rem; margin-bottom: var(--space-2); color: var(--color-text); }
-h3 { font-size: 1.8rem; margin-bottom: var(--space-2); color: var(--color-text); }
-h4 { font-size: 1.6rem; margin-bottom: var(--space-2); color: var(--color-muted); }
-
-p { margin-top: 0; margin-bottom: var(--space-2); }
-
 /* ===== Layout: Profile | Main | TOC ===== */
 .layout {
   display: grid;
@@ -116,7 +87,7 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
 }
 
 .smngs-navbar .smngs-avatar {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -151,8 +122,8 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
   scroll-margin-top: 6rem;
 }
 
-.section > h1::before,
-.section > h2::before,
+/* The brand bar (::before) on h1/h2 is now applied globally by @smngs/ui.
+   Extend coverage to .section > div > h2 which the library doesn't target. */
 .section > div > h2::before {
   content: "";
   display: inline-block;
@@ -201,7 +172,7 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
 .hero .eng-name { font-size: var(--text-xl); margin-bottom: var(--space-3); color: rgba(255, 255, 255, 0.85); }
 
 .hero .smngs-avatar {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -224,7 +195,7 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
   font-weight: var(--font-bold);
   line-height: 1;
   text-decoration: none;
-  transition: background-color 0.1s ease;
+  transition: background-color var(--ease-fast);
 }
 
 .hero-badge:hover {
@@ -324,7 +295,6 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
 /* ===== MDX Prose ===== */
 .prose h1, .prose h2, .prose h3 { margin-top: var(--space-4); }
 .prose img { border-radius: var(--radius-md); }
-.prose hr { border: none; border-top: 1px solid var(--color-divider); margin: var(--space-4) 0; }
 
 /* ===== Sidebar Profile ===== */
 .sidebar-profile {
@@ -398,9 +368,9 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 1000px) {
+@media (max-width: 1700px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr min(96rem, 100%) 1fr;
   }
 
   .layout .smngs-toc,
@@ -409,8 +379,7 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
   }
 
   .layout .page {
-    grid-column: 1;
-    max-width: none;
+    grid-column: 2;
   }
 }
 
@@ -419,9 +388,6 @@ p { margin-top: 0; margin-bottom: var(--space-2); }
     padding: var(--space-3);
   }
 
-  h1 { font-size: 2.4rem; }
-  h2 { font-size: 1.8rem; }
-  h3 { font-size: 1.6rem; }
 
   .education-list {
     display: flex;

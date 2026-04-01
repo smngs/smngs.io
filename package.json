@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build && next-sitemap",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@fontsource/m-plus-1": "^5.2.8",
@@ -23,11 +25,13 @@
     "rehype-slug": "^6.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "serve": "^14.2.6",
     "typescript": "^5"
   }
 }
