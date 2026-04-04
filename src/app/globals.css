@@ -7,7 +7,7 @@
 /* ===== Layout: Profile | Main | TOC ===== */
 .layout {
   display: grid;
-  grid-template-columns: 1fr min(50rem, 100%) 1fr;
+  grid-template-columns: 1fr min(60rem, 100%) 1fr;
   align-items: start;
   overflow-x: clip;
 }
@@ -299,7 +299,7 @@
   position: sticky;
   top: calc(var(--header-top) * 2 + 4rem);
   max-height: calc(100vh - 8rem);
-  width: min(16rem, 100%);
+  width: min(20rem, 100%);
   padding: var(--space-5);
   display: flex;
   flex-direction: column;
@@ -368,7 +368,7 @@
 /* ===== Responsive ===== */
 @media (max-width: 1200px) {
   .layout {
-    grid-template-columns: 1fr min(50rem, 100%) 1fr;
+    grid-template-columns: 1fr min(60rem, 100%) 1fr;
   }
 
   .layout .smngs-toc,
