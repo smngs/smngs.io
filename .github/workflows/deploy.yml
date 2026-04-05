@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm ci
+      - run: npm install --legacy-peer-deps
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PKG_READ_TOKEN }}
       - run: npm run build
