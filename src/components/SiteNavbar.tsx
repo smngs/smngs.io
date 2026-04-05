@@ -9,12 +9,14 @@ import {
   NavbarRight,
   NavbarHamburger,
   NavbarMobileMenu,
+  NavbarThemeToggle,
   Avatar,
 } from "./UiClientExports";
-import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "./ThemeProvider";
 
 export function SiteNavbar() {
   const pathname = usePathname();
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <>
@@ -34,7 +36,7 @@ export function SiteNavbar() {
               Blog
             </Link>
           </NavbarLinks>
-          <ThemeToggle />
+          <NavbarThemeToggle isDark={isDark} onToggle={toggleTheme} />
           <NavbarHamburger />
         </NavbarRight>
         <NavbarMobileMenu>

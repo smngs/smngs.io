@@ -10,5 +10,6 @@ export {
   NavbarRight,
   NavbarHamburger,
   NavbarMobileMenu,
+  NavbarThemeToggle,
   Toc,
 } from "@smngs/ui";
