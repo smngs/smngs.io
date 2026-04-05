@@ -14,7 +14,7 @@
 
 .layout .sidebar-profile,
 .layout .smngs-toc {
-  margin-top: 6rem;
+  margin-top: var(--space-8);
 }
 
 .layout .sidebar-profile {
@@ -117,7 +117,7 @@
 /* ===== Section Styles ===== */
 .section {
   margin-bottom: var(--space-5);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: var(--space-8);
 }
 
 /* The brand bar (::before) on h1/h2 is now applied globally by @smngs/ui.
@@ -145,7 +145,7 @@
 }
 
 .section > div[id] {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: var(--space-8);
 }
 
 /* ===== Hero Section ===== */
@@ -297,8 +297,8 @@
 /* ===== Sidebar Profile ===== */
 .sidebar-profile {
   position: sticky;
-  top: calc(var(--header-top) * 2 + 4rem);
-  max-height: calc(100vh - 8rem);
+  top: calc(var(--header-top) * 2 + var(--space-8));
+  max-height: calc(100vh - calc(var(--space-8) * 2));
   width: min(20rem, 100%);
   padding: var(--space-5);
   display: flex;
