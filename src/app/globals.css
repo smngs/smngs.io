@@ -7,7 +7,10 @@
 /* ===== Layout: Profile | Main | TOC ===== */
 .layout {
   display: grid;
-  grid-template-columns: 1fr min(60rem, 100%) 1fr;
+  grid-template-columns: 18rem 1fr 18rem;
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
   align-items: start;
   overflow-x: clip;
 }
@@ -19,20 +22,18 @@
 
 .layout .sidebar-profile {
   grid-column: 1;
-  justify-self: center;
+  justify-self: start;
 }
 
 .layout .page {
   grid-column: 2;
-  max-width: none;
-  margin: 0;
   min-width: 0;
   padding: var(--space-5);
 }
 
 .layout .smngs-toc {
   grid-column: 3;
-  justify-self: center;
+  justify-self: end;
 }
 
 /* ===== Nav Spacer ===== */
@@ -257,7 +258,7 @@
 /* ===== Footer ===== */
 .site-footer {
   text-align: left;
-  padding: var(--space-5) 0;
+  padding: var(--space-5) var(--space-3);
   color: var(--color-muted);
   font-size: var(--text-sm);
   border-top: 1px solid var(--color-divider);
@@ -347,9 +348,10 @@
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .layout {
-    grid-template-columns: 1fr min(60rem, 100%) 1fr;
+    grid-template-columns: 1fr;
+    max-width: 60rem;
   }
 
   .layout .smngs-toc,
@@ -358,12 +360,14 @@
   }
 
   .layout .page {
-    grid-column: 2;
+    grid-column: 1;
   }
 }
 
 @media (max-width: 768px) {
-  /* Layout — token overrides handle font/spacing automatically */
+  .layout {
+    padding-inline: var(--space-3);
+  }
 
   /* Education — layout change */
   .education-list {
