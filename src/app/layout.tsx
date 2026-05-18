@@ -10,6 +10,7 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteToc } from "@/components/SiteToc";
 import { SidebarProfile } from "@/components/SidebarProfile";
 import { Footer } from "@/components/Footer";
+import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +43,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const hasPosts = getAllPosts().length > 0;
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   const enableAnalytics =
     process.env.NODE_ENV === "production" && Boolean(gaId);
@@ -76,7 +78,7 @@ export default function RootLayout({
           <div className="layout">
             <SidebarProfile />
             <div className="page">
-              <SiteNavbar />
+              <SiteNavbar hasPosts={hasPosts} />
               <main>{children}</main>
               <Footer />
             </div>
