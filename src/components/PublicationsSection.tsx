@@ -5,6 +5,16 @@ import { formatToMonthYear, formatToMonthYearJP } from "@/lib/format";
 
 type Author = { name: string; me: boolean };
 
+type Journal = {
+  authors: Author[];
+  title: string;
+  url: string;
+  book_name: string;
+  bib_info: string;
+  date: string;
+  note?: string;
+};
+
 function AuthorList({ authors, separator }: { authors: Author[]; separator: string }) {
   return (
     <>
@@ -29,7 +39,7 @@ export function PublicationsSection() {
 
       <div id="journal-papers"><h2>Journal Papers</h2></div>
       <ul>
-        {journals.map((journal, i) => (
+        {(journals as Journal[]).map((journal, i) => (
           <li key={i}>
             <AuthorList authors={journal.authors} separator="and" />
             &ldquo;<a href={journal.url}>{journal.title}</a>&rdquo;,{" "}
