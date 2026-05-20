@@ -4,6 +4,18 @@
       { "name": "峯岸 聖太", "me": true },
       { "name": "萬代 雅希", "me": false }
     ],
+    "title": "分散型属性ベース暗号を適用したIPFSビデオストリーミングのための局所性を考慮した経路情報配置手法",
+    "url": "https://ken.ieice.org/ken/paper/20260731ycwD/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "presentation_format": null,
+    "place": "大阪",
+    "date": "2026-07-31"
+  },
+  {
+    "authors": [
+      { "name": "峯岸 聖太", "me": true },
+      { "name": "萬代 雅希", "me": false }
+    ],
     "title": "IPFS/HTTP ゲートウェイにおける動画セグメントの事前経路探索手法に関する検討",
     "url": "https://ken.ieice.org/ken/paper/202510090cNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
