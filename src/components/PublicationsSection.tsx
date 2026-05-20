@@ -25,7 +25,7 @@ function AuthorList({ authors, separator }: { authors: Author[]; separator: stri
           ) : (
             author.name
           )}
-          {i !== authors.length - 1 ? ` ${separator} ` : ", "}
+          {i !== authors.length - 1 ? separator : ", "}
         </span>
       ))}
     </>
@@ -41,7 +41,7 @@ export function PublicationsSection() {
       <ul>
         {(journals as Journal[]).map((journal, i) => (
           <li key={i}>
-            <AuthorList authors={journal.authors} separator="and" />
+            <AuthorList authors={journal.authors} separator=" and " />
             &ldquo;<a href={journal.url}>{journal.title}</a>&rdquo;,{" "}
             {journal.book_name}, {journal.bib_info},{" "}
             {formatToMonthYear(journal.date)}
@@ -54,7 +54,7 @@ export function PublicationsSection() {
       <ul>
         {conferences.map((conf, i) => (
           <li key={i}>
-            <AuthorList authors={conf.authors} separator="and" />
+            <AuthorList authors={conf.authors} separator=" and " />
             &ldquo;<a href={conf.url}>{conf.title}</a>&rdquo;,{" "}
             {conf.book_name},{" "}
             {conf.presentation_format && <>{conf.presentation_format}, </>}
@@ -69,7 +69,7 @@ export function PublicationsSection() {
       <ul>
         {domestics.map((dom, i) => (
           <li key={i}>
-            <AuthorList authors={dom.authors} separator="," />
+            <AuthorList authors={dom.authors} separator=", " />
             &ldquo;<a href={dom.url}>{dom.title}</a>&rdquo;,{" "}
             {dom.book_name},{" "}
             {dom.presentation_format && <>{dom.presentation_format}, </>}
