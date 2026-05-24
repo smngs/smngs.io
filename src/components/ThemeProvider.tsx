@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from "react";
 
 type ThemeContextValue = {
   isDark: boolean;
@@ -31,7 +31,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setIsDark(getInitialTheme());
   }, []);
 
+  const didInit = useRef(false);
   useEffect(() => {
+    if (!didInit.current) {
+      didInit.current = true;
+      return;
+    }
     if (isDark) {
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
