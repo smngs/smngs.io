@@ -1,12 +1,24 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 export function ReferenceTooltip({ reference }: { reference: string }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const tipRef = useRef<HTMLSpanElement>(null);
+  const wasFocusedRef = useRef(false);
+
+  useEffect(() => {
+    const handler = (e: PointerEvent) => {
+      const btn = btnRef.current;
+      if (!btn) return;
+      if (document.activeElement !== btn) return;
+      if (!btn.contains(e.target as Node)) btn.blur();
+    };
+    document.addEventListener("pointerdown", handler);
+    return () => document.removeEventListener("pointerdown", handler);
+  }, []);
 
   const updatePosition = () => {
     const btn = btnRef.current;
@@ -36,9 +48,12 @@ export function ReferenceTooltip({ reference }: { reference: string }) {
       onMouseEnter={updatePosition}
       onFocus={updatePosition}
       onTouchStart={updatePosition}
+      onPointerDown={(e) => {
+        wasFocusedRef.current = document.activeElement === e.currentTarget;
+      }}
       onClick={(e) => {
-        updatePosition();
-        e.currentTarget.focus();
+        e.preventDefault();
+        if (wasFocusedRef.current) e.currentTarget.blur();
       }}
     >
       <FontAwesomeIcon icon={faBook} />
