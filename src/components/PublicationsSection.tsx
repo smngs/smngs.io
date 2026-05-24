@@ -2,8 +2,21 @@ import journals from "../../data/journal.json";
 import conferences from "../../data/conference.json";
 import domestics from "../../data/domestic.json";
 import { formatToMonthYear, formatToMonthYearJP } from "@/lib/format";
+import { ReferenceTooltip } from "./ReferenceTooltip";
 
 type Author = { name: string; me: boolean };
+
+type Domestic = {
+  authors: Author[];
+  title: string;
+  url: string;
+  book_name: string;
+  presentation_format: string | null;
+  place: string;
+  date: string;
+  reference?: string;
+  note?: string;
+};
 
 type Journal = {
   authors: Author[];
@@ -67,7 +80,7 @@ export function PublicationsSection() {
 
       <div id="presentations"><h2>Presentations</h2></div>
       <ul>
-        {domestics.map((dom, i) => (
+        {(domestics as Domestic[]).map((dom, i) => (
           <li key={i}>
             <AuthorList authors={dom.authors} separator=", " />
             &ldquo;<a href={dom.url}>{dom.title}</a>&rdquo;,{" "}
@@ -76,6 +89,7 @@ export function PublicationsSection() {
             {dom.place},{" "}
             {formatToMonthYearJP(dom.date)}
             {dom.note ? <span> ({dom.note}).</span> : <span>.</span>}
+            {dom.reference && <ReferenceTooltip reference={dom.reference} />}
           </li>
         ))}
       </ul>
