@@ -3,6 +3,8 @@ import conferences from "../../data/conference.json";
 import domestics from "../../data/domestic.json";
 import { formatToMonthYear, formatToMonthYearJP } from "@/lib/format";
 import { ReferenceTooltip } from "./ReferenceTooltip";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
 
 type Author = { name: string; me: boolean };
 
@@ -16,6 +18,7 @@ type Domestic = {
   date: string;
   reference?: string;
   note?: string;
+  note_url?: string;
 };
 
 type Journal = {
@@ -90,6 +93,15 @@ export function PublicationsSection() {
             {formatToMonthYearJP(dom.date)}
             {dom.note ? <span> ({dom.note}).</span> : <span>.</span>}
             {dom.reference && <ReferenceTooltip reference={dom.reference} />}
+            {dom.note_url && (
+              <a
+                href={dom.note_url}
+                className="reference-icon"
+                aria-label={dom.note ?? "Reference"}
+              >
+                <FontAwesomeIcon icon={faNewspaper} />
+              </a>
+            )}
           </li>
         ))}
       </ul>
