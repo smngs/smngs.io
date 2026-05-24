@@ -4,7 +4,7 @@
       { "name": "峯岸 聖太", "me": true },
       { "name": "萬代 雅希", "me": false }
     ],
-    "title": "分散型属性ベース暗号を適用したIPFSビデオストリーミングのための局所性を考慮した経路情報配置手法",
+    "title": "分散型属性ベース暗号を適用した IPFS ビデオストリーミングのための局所性を考慮した経路情報配置手法",
     "url": "https://ken.ieice.org/ken/paper/20260731ycwD/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
     "presentation_format": null,
@@ -19,6 +19,7 @@
     "title": "IPFS/HTTP ゲートウェイにおける動画セグメントの事前経路探索手法に関する検討",
     "url": "https://ken.ieice.org/ken/paper/202510090cNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "reference": "信学技報, vol. 125, no. 198, NS2025-98, pp. 65-68, 2025年10月.",
     "presentation_format": null,
     "place": "京都",
     "date": "2025-10-09"
@@ -32,6 +33,7 @@
     "title": "再生速度を考慮した階層符号化動画ストリーミングの検討",
     "url": "https://ken.ieice.org/ken/paper/20251008jcNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "reference": "信学技報, vol. 125, no. 198, NS2025-89, pp. 26-29, 2025年10月.",
     "presentation_format": null,
     "place": "京都",
     "date": "2025-10-08"
@@ -45,6 +47,7 @@
     "title": "IoT におけるパケットレベル侵入検知システムの実装と評価",
     "url": "https://ken.ieice.org/ken/paper/20251010FcNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "reference": "信学技報, vol. 125, no. 198, NS2025-125, pp. 122-122, 2025年10月.",
     "presentation_format": null,
     "place": "京都",
     "date": "2025-10-10"
@@ -57,6 +60,7 @@
     "title": "IPFS 階層符号ビデオストリーミングにおけるコンテンツプリフェッチ",
     "url": "https://ken.ieice.org/ken/paper/20250124hcHw/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "reference": "信学技報, vol. 124, no. 344, NS2024-186, pp. 94-97, 2025年1月.",
     "presentation_format": null,
     "place": "大阪",
     "date": "2025-01-24",
@@ -71,6 +75,7 @@
     "title": "階層符号化を用いた IPFS ビデオストリーミングにおけるコンテンツプリフェッチの性能評価",
     "url": "https://ken.ieice.org/ken/paper/20240718TcEF/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "reference": "信学技報, vol. 124, no. 106, NS2024-51, pp. 56-59, 2024年7月.",
     "presentation_format": null,
     "place": "札幌",
     "date": "2024-07-18",
@@ -85,6 +90,7 @@
     "title": "再生速度を考慮したアダプティブビデオストリーミング",
     "url": "https://ken.ieice.org/ken/paper/20240718zcEF/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "reference": "信学技報, vol. 124, no. 106, NS2024-52, pp. 60-63, 2024年7月.",
     "presentation_format": null,
     "place": "札幌",
     "date": "2024-07-18",
