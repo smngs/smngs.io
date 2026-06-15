@@ -4,6 +4,23 @@
 @import "@fontsource/m-plus-1/500.css";
 @import "@fontsource/m-plus-1/700.css";
 
+:root {
+  /* Content width of the full-width nav/footer brand bars. */
+  --bar-max-w: 60rem;
+  --nav-height: 4rem;
+}
+
+body {
+  margin: 0;
+}
+
+/* The header collapses the hero on scroll, which changes document height.
+   Disable scroll anchoring so the browser doesn't fight that by nudging
+   scrollY (which otherwise causes a collapse/expand flicker on mobile). */
+html {
+  overflow-anchor: none;
+}
+
 /* ===== Layout: Profile | Main | TOC ===== */
 .layout {
   display: grid;
@@ -12,9 +29,11 @@
   overflow-x: clip;
 }
 
+/* The header is its own full-width grid row; align the side columns' top with
+   the main column's first section (which has space-6 of top padding). */
 .layout .sidebar-profile,
 .layout .smngs-toc {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
 }
 
 .layout .sidebar-profile {
@@ -27,7 +46,9 @@
   max-width: none;
   margin: 0;
   min-width: 0;
-  padding: var(--space-5);
+  /* Header and footer are their own grid rows; this column needs side gutters
+     plus some breathing room above the first section. */
+  padding: var(--space-6) var(--space-5) 0;
 }
 
 .layout .smngs-toc {
@@ -35,22 +56,21 @@
   justify-self: center;
 }
 
-/* ===== Nav Spacer ===== */
-.nav-spacer {
-  position: sticky;
-  top: 0;
-  height: calc(var(--header-top) + var(--radius-lg));
-  background: var(--color-bg);
-  z-index: calc(var(--z-header) - 1);
-  margin-bottom: calc(var(--radius-lg) * -1);
-}
-
 /* ===== Navbar Overrides ===== */
+/* Full-bleed brand bar pinned to the very top. The navbar is nested in the
+   centered .page column, so break out to the full viewport width; symmetric
+   padding re-centers the content at --bar-max-w (this build's @smngs/ui has no
+   inner wrapper, so we center via padding rather than a max-width child). */
 .smngs-navbar {
   position: sticky;
-  top: var(--header-top);
+  top: 0;
   z-index: var(--z-header);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-bottom: var(--space-5);
+  padding: var(--space-4) max(var(--space-5), calc(50vw - var(--bar-max-w) / 2));
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .smngs-navbar a[href] {
@@ -349,13 +369,17 @@
 }
 
 /* ===== Footer ===== */
+/* Full-bleed brand bar matching the navbar; content re-centered at --bar-max-w. */
 .site-footer {
-  text-align: left;
-  padding: var(--space-5) 0;
-  color: var(--color-muted);
+  margin-top: var(--space-6);
+  background-color: var(--color-brand);
+}
+.site-footer-inner {
+  max-width: var(--bar-max-w);
+  margin: 0 auto;
+  padding: var(--space-5);
+  color: rgba(255, 255, 255, 0.85);
   font-size: var(--text-sm);
-  border-top: 1px solid var(--color-divider);
-  margin-top: var(--space-5);
 }
 
 /* ===== Blog List ===== */
@@ -372,7 +396,7 @@
 /* ===== Sidebar Profile ===== */
 .sidebar-profile {
   position: sticky;
-  top: calc(var(--header-top) * 2 + var(--space-8));
+  top: calc(var(--nav-height) + var(--space-5));
   max-height: calc(100vh - calc(var(--space-8) * 2));
   width: min(20rem, 100%);
   padding: var(--space-5);
@@ -481,5 +505,198 @@
   /* Hero — hardcoded sizes */
   .hero-icon {
     width: 4em;
+  }
+}
+
+/* ===== Site Header (navbar row + morphing hero) ===== */
+.site-header {
+  display: contents;
+}
+
+/* Navbar row: full-bleed brand bar pinned to the very top. */
+.header-bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-brand);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4)
+    max(var(--space-5), calc(50vw - var(--bar-max-w) / 2 + var(--space-5)));
+  margin-bottom: var(--space-5);
+}
+/* On home the hero continues directly below the bar, so no gap there. */
+.site-header[data-home="true"] .header-bar {
+  margin-bottom: 0;
+}
+.header-brand {
+  display: inline-flex;
+  align-items: center;
+}
+/* Real in-flow avatars: they reserve the slots the desktop fly avatar morphs
+   between (hidden on desktop), and on mobile they are the visible avatars that
+   cross-fade. */
+.bar-avatar,
+.hero-avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  visibility: hidden;
+}
+.bar-avatar {
+  width: 2rem;
+  height: 2rem;
+}
+.hero-avatar {
+  width: 8rem;
+  height: 8rem;
+}
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.header-links {
+  display: flex;
+  gap: var(--space-1);
+}
+.header-links a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  padding: 0.3em 0.7em;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--ease-fast);
+}
+.header-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.header-links a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.theme-toggle,
+.header-hamburger {
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--text-lg);
+  line-height: 1;
+  padding: 0.3em 0.5em;
+  border-radius: var(--radius-sm);
+}
+.theme-toggle:hover,
+.header-hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.header-hamburger {
+  display: none;
+}
+.header-mobile-menu {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.header-mobile-menu a {
+  color: var(--color-white);
+  text-decoration: none;
+  padding: 0.5em 0.7em;
+  border-radius: var(--radius-sm);
+}
+
+/* Hero: full-bleed brand band directly under the navbar; scrolls away. */
+.header-hero {
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-brand);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6)
+    max(var(--space-5), calc(50vw - var(--bar-max-w) / 2 + var(--space-5)))
+    var(--space-8);
+  /* Collapse to nothing as p → 1 (driven by SiteHeader's scroll handler). */
+  max-height: calc((1 - var(--p, 0)) * var(--hero-max, 24rem));
+  margin-bottom: calc((1 - var(--p, 0)) * var(--space-5));
+}
+.header-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+.header-hero-text .name {
+  font-weight: var(--font-medium);
+  font-size: var(--text-4xl);
+  margin-bottom: 0.1em;
+}
+.header-hero-text .eng-name {
+  font-size: var(--text-2xl);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-5);
+}
+.header-hero a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+/* The single floating avatar that morphs between the two slots (positioned
+   each frame by SiteHeader). */
+.morph-avatar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: calc(var(--z-header) + 1);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background-color: var(--color-white);
+  will-change: transform, width, height;
+}
+.morph-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .header-links {
+    display: none;
+  }
+  .header-hamburger {
+    display: inline-flex;
+  }
+  .header-hero-text .name {
+    font-size: var(--text-2xl);
+  }
+  .header-hero-text .eng-name {
+    font-size: var(--text-lg);
+  }
+
+  /* Mobile: no fixed fly avatar (it drifts); cross-fade the real in-flow
+     avatars via opacity instead. */
+  .morph-avatar {
+    display: none;
+  }
+  .bar-avatar {
+    visibility: visible;
+    opacity: var(--p, 1);
+  }
+  .hero-avatar {
+    width: 4rem;
+    height: 4rem;
+    visibility: visible;
+    opacity: calc(1 - var(--p, 0));
   }
 }

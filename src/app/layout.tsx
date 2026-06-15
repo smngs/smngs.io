@@ -6,9 +6,9 @@ config.autoAddCss = false;
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { SiteNavbar } from "@/components/SiteNavbar";
+import { SiteHeader } from "@/components/SiteHeader";
 import { SiteToc } from "@/components/SiteToc";
-import { SidebarProfile } from "@/components/SidebarProfile";
+// import { SidebarProfile } from "@/components/SidebarProfile";
 import { Footer } from "@/components/Footer";
 import { getAllPosts } from "@/lib/blog";
 
@@ -76,15 +76,15 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
+          <SiteHeader hasPosts={hasPosts} />
           <div className="layout">
-            <SidebarProfile />
+            {/* <SidebarProfile /> */}
             <div className="page">
-              <SiteNavbar hasPosts={hasPosts} />
               <main>{children}</main>
-              <Footer />
             </div>
             <SiteToc />
           </div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

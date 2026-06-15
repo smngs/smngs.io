@@ -1,7 +1,9 @@
 export function Footer() {
   return (
     <footer className="site-footer">
-      <p>Shota Minegishi</p>
+      <div className="site-footer-inner">
+        <p>Shota Minegishi</p>
+      </div>
     </footer>
   );
 }
