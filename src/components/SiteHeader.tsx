@@ -77,9 +77,27 @@ export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
       top: anchor.topDoc - window.scrollY,
       width: anchor.width,
     });
+    // Both measurements are bogus while the hero is collapsed: scrollHeight
+    // under-reports (the vertically-centered content overflows above the
+    // padding box and isn't counted, and the vertical padding has collapsed)
+    // and the avatar slot sits in the wrong place. Force the fully-expanded
+    // layout (--p = 0 restores the padding, max-height: none unclamps the
+    // height) for the measurement, then restore so resizing while scrolled
+    // down still yields the correct values.
+    const remeasure = () => {
+      const hero = heroBlock.current;
+      const prevP = header.style.getPropertyValue("--p");
+      const prevMax = hero?.style.maxHeight;
+      header.style.setProperty("--p", "0");
+      if (hero) hero.style.maxHeight = "none";
+      setHeroMax();
+      measureAnchor();
+      if (hero) hero.style.maxHeight = prevMax ?? "";
+      if (prevP) header.style.setProperty("--p", prevP);
+      else header.style.removeProperty("--p");
+    };
 
-    setHeroMax();
-    measureAnchor();
+    remeasure();
 
     const COLLAPSE_AT = 24;
     const EXPAND_AT = 4;
@@ -106,8 +124,7 @@ export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
       raf = requestAnimationFrame(frame);
     };
     const onResize = () => {
-      setHeroMax();
-      if (cur === 0) measureAnchor();
+      remeasure();
       render();
     };
 

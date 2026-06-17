@@ -622,9 +622,14 @@ html {
   display: flex;
   align-items: center;
   gap: var(--space-5);
-  padding: var(--space-6)
-    max(var(--space-5), calc(50vw - var(--bar-max-w) / 2 + var(--space-5)))
-    var(--space-8);
+  /* Horizontal padding is static; the vertical padding collapses with the hero.
+     Padding is not compressible by max-height, so a static vertical padding
+     would leave a ~96px band lingering at p = 1 (visible as a broken slice when
+     stopped mid-scroll). Scaling it lets the band reach a true 0 height. */
+  padding-inline:
+    max(var(--space-5), calc(50vw - var(--bar-max-w) / 2 + var(--space-5)));
+  padding-top: calc((1 - var(--p, 0)) * var(--space-6));
+  padding-bottom: calc((1 - var(--p, 0)) * var(--space-8));
   /* Collapse to nothing as p → 1 (driven by SiteHeader's scroll handler). */
   max-height: calc((1 - var(--p, 0)) * var(--hero-max, 24rem));
   margin-bottom: calc((1 - var(--p, 0)) * var(--space-5));
