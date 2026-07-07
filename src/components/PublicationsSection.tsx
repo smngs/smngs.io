@@ -24,10 +24,10 @@ type Domestic = {
 type Journal = {
   authors: Author[];
   title: string;
-  url: string;
+  url?: string;
   book_name: string;
-  bib_info: string;
-  date: string;
+  bib_info?: string;
+  date?: string;
   note?: string;
 };
 
@@ -58,9 +58,15 @@ export function PublicationsSection() {
         {(journals as Journal[]).map((journal, i) => (
           <li key={i}>
             <AuthorList authors={journal.authors} separator=" and " />
-            &ldquo;<a href={journal.url}>{journal.title}</a>&rdquo;,{" "}
-            {journal.book_name}, {journal.bib_info},{" "}
-            {formatToMonthYear(journal.date)}
+            &ldquo;
+            {journal.url ? (
+              <a href={journal.url}>{journal.title}</a>
+            ) : (
+              journal.title
+            )}
+            &rdquo;, {journal.book_name}
+            {journal.bib_info && <>, {journal.bib_info}</>}
+            {journal.date && <>, {formatToMonthYear(journal.date)}</>}
             {journal.note ? <span> ({journal.note}).</span> : <span>.</span>}
           </li>
         ))}
