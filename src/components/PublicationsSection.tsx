@@ -31,7 +31,15 @@ type Journal = {
   note?: string;
 };
 
-function AuthorList({ authors, separator }: { authors: Author[]; separator: string }) {
+function authorSeparator(index: number, total: number, conjunction?: string) {
+  if (index === total - 1) return ", ";
+  if (conjunction && index === total - 2) {
+    return total === 2 ? ` ${conjunction} ` : `, ${conjunction} `;
+  }
+  return ", ";
+}
+
+function AuthorList({ authors, conjunction }: { authors: Author[]; conjunction?: string }) {
   return (
     <>
       {authors.map((author, i) => (
@@ -41,7 +49,7 @@ function AuthorList({ authors, separator }: { authors: Author[]; separator: stri
           ) : (
             author.name
           )}
-          {i !== authors.length - 1 ? separator : ", "}
+          {authorSeparator(i, authors.length, conjunction)}
         </span>
       ))}
     </>
@@ -57,7 +65,7 @@ export function PublicationsSection() {
       <ul>
         {(journals as Journal[]).map((journal, i) => (
           <li key={i}>
-            <AuthorList authors={journal.authors} separator=" and " />
+            <AuthorList authors={journal.authors} conjunction="and" />
             &ldquo;
             {journal.url ? (
               <a href={journal.url}>{journal.title}</a>
@@ -76,7 +84,7 @@ export function PublicationsSection() {
       <ul>
         {conferences.map((conf, i) => (
           <li key={i}>
-            <AuthorList authors={conf.authors} separator=" and " />
+            <AuthorList authors={conf.authors} conjunction="and" />
             &ldquo;<a href={conf.url}>{conf.title}</a>&rdquo;,{" "}
             {conf.book_name},{" "}
             {conf.presentation_format && <>{conf.presentation_format}, </>}
@@ -91,7 +99,7 @@ export function PublicationsSection() {
       <ul>
         {(domestics as Domestic[]).map((dom, i) => (
           <li key={i}>
-            <AuthorList authors={dom.authors} separator=", " />
+            <AuthorList authors={dom.authors} />
             &ldquo;<a href={dom.url}>{dom.title}</a>&rdquo;,{" "}
             {dom.book_name},{" "}
             {dom.presentation_format && <>{dom.presentation_format}, </>}
