@@ -1,6 +1,15 @@
 [
   {
     "authors": [
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
+    "title": "Preemptive Content Routing Method for IPFS Video Streaming",
+    "book_name": "IEICE Transactions on Communications",
+    "note": "Accepted"
+  },
+  {
+    "authors": [
       { "name": "Takumi Adachi", "me": false },
       { "name": "Shota Minegishi", "me": true },
       { "name": "Masaki Bandai", "me": false }
