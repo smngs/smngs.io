@@ -1,6 +1,16 @@
 [
   {
     "authors": [
+      { "name": "Takumi Adachi", "me": false },
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
+    "title": "Video Streaming with Temporal Scalability for User-Initiated Fast-Forward Playback",
+    "book_name": "IEICE Transactions on Communications",
+    "note": "Accepted"
+  },
+  {
+    "authors": [
       { "name": "Shota Minegishi", "me": true },
       { "name": "Masaki Bandai", "me": false }
     ],
