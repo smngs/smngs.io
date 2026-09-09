@@ -22,6 +22,9 @@ export function otherLangPath(pathname: string, lang: Lang): string {
  * two differ — every journal and conference paper is written in English to
  * begin with and needs nothing. So this falls back to the plain field, and an
  * entry that is already English reads the same in both languages.
+ *
+ * An empty `<field>_en` is not a missing translation but a deliberate one: the
+ * field is dropped on the English page.
  */
 export function localized<T = string>(
   entry: Record<string, unknown>,
