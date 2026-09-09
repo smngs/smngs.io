@@ -7,6 +7,7 @@ import {
   Navbar,
   NavbarHamburger,
   NavbarHeader,
+  NavbarIconLink,
   NavbarLinks,
   NavbarMobileMenu,
   NavbarRight,
@@ -15,18 +16,49 @@ import {
 } from "./UiClientExports";
 import { MailLink } from "./MailLink";
 import { GithubIcon, OrcidIcon, ResearchmapIcon, MailIcon } from "./ProfileIcons";
+import { otherLangPath, strings, type Lang } from "@/lib/i18n";
+import { NAME_EN, NAME_JA } from "@/lib/site";
 
-const AVATAR = { src: "https://github.com/smngs.png", alt: "@smngs", href: "/" };
+const AVATAR_SRC = "https://github.com/smngs.png";
+
+/**
+ * Drawn rather than taken from Font Awesome: the theme toggle beside it is a
+ * hairline sun and moon, and a solid glyph next to them reads as a different
+ * weight of control. Same 24px box, same 2px round stroke.
+ */
+function GlobeIcon() {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
 
 /**
  * Picks the header for the current route: the home page gets the hero and its
  * scroll behaviour, everything else gets the bare navbar. Both are @smngs/ui's;
  * `brandLink` hands them Next's Link so the avatar keeps client-side routing.
  */
-export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
+export function SiteHeader({ hasPosts, lang }: { hasPosts: boolean; lang: Lang }) {
   const pathname = usePathname();
   const { isDark, toggleTheme } = useTheme();
-  const isHome = pathname === "/";
+
+  const home = lang === "ja" ? "/" : "/en";
+  const blog = `${lang === "ja" ? "" : "/en"}/blog`;
+  const isHome = pathname === home;
+  const avatar = { src: AVATAR_SRC, alt: "@smngs", href: home };
 
   const bar = (
     <NavbarRight>
@@ -34,15 +66,24 @@ export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
         {/* The nav button variants, not bare anchors: a bare link takes the
             default link colour, which is the brand colour the bar is painted
             in. */}
-        <Button variant={pathname === "/" ? "nav-active" : "nav"} asChild>
-          <Link href="/">About</Link>
+        <Button variant={isHome ? "nav-active" : "nav"} asChild>
+          <Link href={home}>About</Link>
         </Button>
         {hasPosts && (
-          <Button variant={pathname.startsWith("/blog") ? "nav-active" : "nav"} asChild>
-            <Link href="/blog">Blog</Link>
+          <Button variant={pathname.startsWith(blog) ? "nav-active" : "nav"} asChild>
+            <Link href={blog}>Blog</Link>
           </Button>
         )}
       </NavbarLinks>
+      {/* A link rather than a button: the other language is a real page, so it
+          should be openable in a new tab and followable by a crawler. */}
+      <NavbarIconLink
+        href={otherLangPath(pathname, lang)}
+        label={strings[lang].switchLanguage}
+        hrefLang={lang === "ja" ? "en" : "ja"}
+      >
+        <GlobeIcon />
+      </NavbarIconLink>
       <NavbarThemeToggle isDark={isDark} onToggle={toggleTheme} />
       <NavbarHamburger />
     </NavbarRight>
@@ -50,17 +91,17 @@ export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
 
   const menu = (
     <NavbarMobileMenu>
-      <Link href="/">About</Link>
-      {hasPosts && <Link href="/blog">Blog</Link>}
+      <Link href={home}>About</Link>
+      {hasPosts && <Link href={blog}>Blog</Link>}
     </NavbarMobileMenu>
   );
 
   if (!isHome) {
     return (
       <Navbar>
-        <Link href="/" className="smngs-navbar-brand" aria-label="Home">
+        <Link href={home} className="smngs-navbar-brand" aria-label="Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="smngs-navbar-avatar" src={AVATAR.src} alt={AVATAR.alt} />
+          <img className="smngs-navbar-avatar" src={avatar.src} alt={avatar.alt} />
         </Link>
         {bar}
         {menu}
@@ -69,18 +110,27 @@ export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
   }
 
   return (
-    <NavbarHeader avatar={AVATAR} brandLink={<Link href="/" aria-label="Home" />} hero={<Hero />}>
+    <NavbarHeader
+      avatar={avatar}
+      brandLink={<Link href={home} aria-label="Home" />}
+      hero={<Hero lang={lang} />}
+    >
       {bar}
       {menu}
     </NavbarHeader>
   );
 }
 
-function Hero() {
+/** The name leads in the page's own language; the other form sits under it. */
+function Hero({ lang }: { lang: Lang }) {
   return (
     <>
-      <div className="name">峯岸 聖太</div>
-      <div className="eng-name">Shota Minegishi</div>
+      <div className="name" lang={lang === "ja" ? "ja" : "en"}>
+        {lang === "ja" ? NAME_JA : NAME_EN}
+      </div>
+      <div className="eng-name" lang={lang === "ja" ? "en" : "ja"}>
+        {lang === "ja" ? NAME_EN : NAME_JA}
+      </div>
       <div className="hero-badges">
         <a
           href="https://github.com/smngs"

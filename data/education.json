@@ -3,12 +3,24 @@
     "from_year": 2022,
     "to_year": 2024,
     "topic": "修士（工学）",
-    "affiliation": ["上智大学大学院 理工学研究科 理工学専攻 情報学領域"]
+    "topic_en": "Master of Engineering",
+    "affiliation": [
+      "上智大学大学院 理工学研究科 理工学専攻 情報学領域"
+    ],
+    "affiliation_en": [
+      "Information Science Division, Graduate School of Science and Technology, Sophia University"
+    ]
   },
   {
     "from_year": 2019,
     "to_year": 2022,
     "topic": "学士（理工学）",
-    "affiliation": ["上智大学 理工学部 情報理工学科"]
+    "topic_en": "Bachelor of Science and Technology",
+    "affiliation": [
+      "上智大学 理工学部 情報理工学科"
+    ],
+    "affiliation_en": [
+      "Department of Information and Communication Sciences, Faculty of Science and Technology, Sophia University"
+    ]
   }
 ]

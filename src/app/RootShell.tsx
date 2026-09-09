@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { themeInitScript } from "@smngs/ui/theme-script";
 import Script from "next/script";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -10,48 +9,38 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteToc } from "@/components/SiteToc";
 import { Footer, ThemeProvider } from "@/components/UiClientExports";
 import { getAllPosts } from "@/lib/blog";
+import type { Lang } from "@/lib/i18n";
+import { NAME_EN, personJsonLd } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: {
-    default: "Shota Minegishi (@smngs)",
-    template: "%s | Shota Minegishi",
-  },
-  description:
-    "Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University, Japan.",
-  metadataBase: new URL("https://smngs.io"),
-  icons: { icon: "/favicon.png" },
-  openGraph: {
-    title: "Shota Minegishi (@smngs)",
-    description:
-      "Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University, Japan.",
-    url: "https://smngs.io",
-    siteName: "smngs.io",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Shota Minegishi (@smngs)",
-    description:
-      "Shota Minegishi is a doctoral course student of the Faculty of Science and Technology, Sophia University, Japan.",
-  },
-};
-
-export default function RootLayout({
+/**
+ * The document both roots render.
+ *
+ * There are two root layouts — one per language — because `<html lang>` has to
+ * differ and `output: "export"` rules out Next's middleware-based i18n
+ * routing. Everything below `<html>` is identical apart from the `lang` that
+ * gets threaded down, so it lives here rather than being copied twice.
+ */
+export function RootShell({
+  lang,
   children,
-}: Readonly<{
+}: {
+  lang: Lang;
   children: React.ReactNode;
-}>) {
+}) {
   const hasPosts = getAllPosts().length > 0;
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   const enableAnalytics =
     process.env.NODE_ENV === "production" && Boolean(gaId);
 
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <meta name="darkreader-lock" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(lang)) }}
+        />
         {enableAnalytics && (
           <>
             <Script
@@ -71,14 +60,14 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <SiteHeader hasPosts={hasPosts} />
+          <SiteHeader hasPosts={hasPosts} lang={lang} />
           <div className="smngs-layout">
             <div className="page">
               <main>{children}</main>
             </div>
             <SiteToc />
           </div>
-          <Footer>Shota Minegishi</Footer>
+          <Footer>{NAME_EN}</Footer>
         </ThemeProvider>
       </body>
     </html>

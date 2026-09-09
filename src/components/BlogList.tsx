@@ -1,8 +1,10 @@
 import { getAllPosts } from "@/lib/blog";
 import { ArticleListCard } from "@/components/UiClientExports";
+import { strings, type Lang } from "@/lib/i18n";
 
-export default function BlogPage() {
+export function BlogList({ lang }: { lang: Lang }) {
   const posts = getAllPosts();
+  const base = lang === "ja" ? "" : "/en";
 
   return (
     <>
@@ -11,7 +13,7 @@ export default function BlogPage() {
       </div>
       <div className="blog-list">
         {posts.length === 0 ? (
-          <p>記事はまだありません。</p>
+          <p>{strings[lang].noPosts}</p>
         ) : (
           posts.map((post) => (
             <ArticleListCard
@@ -20,7 +22,7 @@ export default function BlogPage() {
               date={post.date}
               description={post.description}
               tags={post.tags}
-              href={`/blog/${post.slug}`}
+              href={`${base}/blog/${post.slug}`}
             />
           ))
         )}
