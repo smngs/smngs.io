@@ -36,11 +36,11 @@ function ItemList({ items }: { items: Item[] }) {
 export function EducationSection() {
   return (
     <>
-      <div className="section" id="affiliation">
+      <div className="smngs-section" id="affiliation">
         <h1>Affiliation</h1>
         <ItemList items={affiliation} />
       </div>
-      <div className="section" id="education">
+      <div className="smngs-section" id="education">
         <h1>Education</h1>
         <ItemList items={education} />
       </div>
