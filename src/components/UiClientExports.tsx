@@ -12,6 +12,7 @@ export {
   NavbarLinks,
   NavbarRight,
   NavbarHamburger,
+  NavbarIconLink,
   NavbarMobileMenu,
   NavbarThemeToggle,
   ThemeProvider,

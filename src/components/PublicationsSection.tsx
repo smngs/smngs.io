@@ -3,6 +3,7 @@ import conferences from "../../data/conference.json";
 import domestics from "../../data/domestic.json";
 import { formatToMonthYear, formatToMonthYearJP } from "@/lib/format";
 import { hyphenate } from "@/lib/hyphenate";
+import { localized, type Lang } from "@/lib/i18n";
 import { ReferenceTooltip } from "./ReferenceTooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +18,7 @@ type Domestic = {
   presentation_format: string | null;
   place: string;
   date: string;
+  lang?: string;
   reference?: string;
   note?: string;
   note_url?: string;
@@ -40,24 +42,33 @@ function authorSeparator(index: number, total: number, conjunction?: string) {
   return ", ";
 }
 
-function AuthorList({ authors, conjunction }: { authors: Author[]; conjunction?: string }) {
+function AuthorList({
+  authors,
+  conjunction,
+  lang = "ja",
+}: {
+  authors: Author[];
+  conjunction?: string;
+  lang?: Lang;
+}) {
   return (
     <>
-      {authors.map((author, i) => (
-        <span key={i}>
-          {author.me ? (
-            <span className="author">{author.name}</span>
-          ) : (
-            author.name
-          )}
-          {authorSeparator(i, authors.length, conjunction)}
-        </span>
-      ))}
+      {authors.map((author, i) => {
+        const name = localized(author, "name", lang);
+        return (
+          <span key={i}>
+            {author.me ? <span className="author">{name}</span> : name}
+            {authorSeparator(i, authors.length, conjunction)}
+          </span>
+        );
+      })}
     </>
   );
 }
 
-export function PublicationsSection() {
+export function PublicationsSection({ lang }: { lang: Lang }) {
+  const isEnglish = lang === "en";
+
   return (
     <div className="smngs-section publications" id="publications">
       <h1>Publications</h1>
@@ -98,27 +109,44 @@ export function PublicationsSection() {
 
       <div id="presentations"><h2>Presentations</h2></div>
       <ul>
-        {(domestics as Domestic[]).map((dom, i) => (
-          <li key={i} lang="ja">
-            <AuthorList authors={dom.authors} />
-            &ldquo;<a href={dom.url}>{dom.title}</a>&rdquo;,{" "}
-            {dom.book_name},{" "}
-            {dom.presentation_format && <>{dom.presentation_format}, </>}
-            {dom.place},{" "}
-            {formatToMonthYearJP(dom.date)}
-            {dom.note ? <span> ({dom.note}).</span> : <span>.</span>}
-            {dom.reference && <ReferenceTooltip reference={dom.reference} />}
-            {dom.note_url && (
-              <a
-                href={dom.note_url}
-                className="reference-icon"
-                aria-label={dom.note ?? "Reference"}
-              >
-                <FontAwesomeIcon icon={faNewspaper} />
-              </a>
-            )}
-          </li>
-        ))}
+        {(domestics as Domestic[]).map((dom, i) => {
+          const text = (value: string) => (isEnglish ? hyphenate(value) : value);
+          // Everything trailing the date goes in one parenthesis. On the
+          // English page a talk given in Japanese says so there, since the
+          // title above it is a translation rather than the published one.
+          const aside = [
+            localized<string | undefined>(dom, "note", lang),
+            isEnglish && dom.lang === "ja" ? "in Japanese" : undefined,
+          ].filter(Boolean);
+
+          return (
+            <li key={i} lang={isEnglish ? "en" : "ja"}>
+              <AuthorList
+                authors={dom.authors}
+                lang={lang}
+                conjunction={isEnglish ? "and" : undefined}
+              />
+              &ldquo;<a href={dom.url}>{text(localized(dom, "title", lang))}</a>&rdquo;,{" "}
+              {text(localized(dom, "book_name", lang))},{" "}
+              {dom.presentation_format && <>{dom.presentation_format}, </>}
+              {localized(dom, "place", lang)},{" "}
+              {isEnglish ? formatToMonthYear(dom.date) : formatToMonthYearJP(dom.date)}
+              {aside.length > 0 ? <span> ({aside.join(", ")}).</span> : <span>.</span>}
+              {dom.reference && (
+                <ReferenceTooltip reference={localized(dom, "reference", lang)} />
+              )}
+              {dom.note_url && (
+                <a
+                  href={dom.note_url}
+                  className="reference-icon"
+                  aria-label={localized<string | undefined>(dom, "note", lang) ?? "Reference"}
+                >
+                  <FontAwesomeIcon icon={faNewspaper} />
+                </a>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
