@@ -28,6 +28,40 @@
   {
     "authors": [
       {
+        "name": "陶 辰麒",
+        "name_en": "Chenqi Tao",
+        "me": false
+      },
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
+    ],
+    "title": "IoT におけるパケットレベル侵入検知システムの実装と評価",
+    "title_en": "Implementation and Evaluation of a Packet-Level Intrusion Detection System in IoT Networks",
+    "url": "https://ken.ieice.org/ken/paper/20251010FcNU/",
+    "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
+    "reference": "信学技報, vol. 125, no. 198, NS2025-125, pp. 122-122, 2025年10月.",
+    "reference_en": "IEICE Technical Report, vol. 125, no. 198, NS2025-125, pp. 122-122, Oct. 2025.",
+    "presentation_format": null,
+    "place": "京都",
+    "place_en": "Kyoto, Japan",
+    "date": "2025-10-10",
+    "note": "はじめての研究会講演奨励賞",
+    "note_en": "",
+    "note_url": "https://www.ieice.org/cs/ns/jpn/hazimete-awards.html",
+    "lang": "ja"
+  },
+  {
+    "authors": [
+      {
         "name": "峯岸 聖太",
         "name_en": "Shota Minegishi",
         "me": true
@@ -80,40 +114,6 @@
     "place": "京都",
     "place_en": "Kyoto, Japan",
     "date": "2025-10-08",
-    "lang": "ja"
-  },
-  {
-    "authors": [
-      {
-        "name": "陶 辰麒",
-        "name_en": "Chenqi Tao",
-        "me": false
-      },
-      {
-        "name": "峯岸 聖太",
-        "name_en": "Shota Minegishi",
-        "me": true
-      },
-      {
-        "name": "萬代 雅希",
-        "name_en": "Masaki Bandai",
-        "me": false
-      }
-    ],
-    "title": "IoT におけるパケットレベル侵入検知システムの実装と評価",
-    "title_en": "Implementation and Evaluation of a Packet-Level Intrusion Detection System in IoT Networks",
-    "url": "https://ken.ieice.org/ken/paper/20251010FcNU/",
-    "book_name": "電子情報通信学会 ネットワークシステム研究会",
-    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
-    "reference": "信学技報, vol. 125, no. 198, NS2025-125, pp. 122-122, 2025年10月.",
-    "reference_en": "IEICE Technical Report, vol. 125, no. 198, NS2025-125, pp. 122-122, Oct. 2025.",
-    "presentation_format": null,
-    "place": "京都",
-    "place_en": "Kyoto, Japan",
-    "date": "2025-10-10",
-    "note": "はじめての研究会講演奨励賞",
-    "note_en": "",
-    "note_url": "https://www.ieice.org/cs/ns/jpn/hazimete-awards.html",
     "lang": "ja"
   },
   {
