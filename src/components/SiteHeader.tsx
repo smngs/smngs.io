@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import {
   Button,
   Navbar,
@@ -22,6 +20,31 @@ import { otherLangPath, strings, type Lang } from "@/lib/i18n";
 import { NAME_EN, NAME_JA } from "@/lib/site";
 
 const AVATAR_SRC = "https://github.com/smngs.png";
+
+/**
+ * Drawn rather than taken from Font Awesome: the theme toggle beside it is a
+ * hairline sun and moon, and a solid glyph next to them reads as a different
+ * weight of control. Same 24px box, same 2px round stroke.
+ */
+function GlobeIcon() {
+  return (
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
 
 /**
  * Picks the header for the current route: the home page gets the hero and its
@@ -59,7 +82,7 @@ export function SiteHeader({ hasPosts, lang }: { hasPosts: boolean; lang: Lang }
         label={strings[lang].switchLanguage}
         hrefLang={lang === "ja" ? "en" : "ja"}
       >
-        <FontAwesomeIcon icon={faGlobe} />
+        <GlobeIcon />
       </NavbarIconLink>
       <NavbarThemeToggle isDark={isDark} onToggle={toggleTheme} />
       <NavbarHamburger />
