@@ -3,12 +3,24 @@
     "from_year": 2024,
     "to_year": 2027,
     "topic": "博士後期課程",
-    "affiliation": ["上智大学大学院 理工学研究科 理工学専攻 情報学領域"]
+    "topic_en": "Doctoral Program",
+    "affiliation": [
+      "上智大学大学院 理工学研究科 理工学専攻 情報学領域"
+    ],
+    "affiliation_en": [
+      "Doctoral Program, Graduate School of Science and Technology, Sophia University"
+    ]
   },
   {
     "from_year": 2024,
     "to_year": 2027,
     "topic": "研究補助員 (RA)",
-    "affiliation": ["上智大学 理工学部"]
+    "topic_en": "Research Assistant (RA)",
+    "affiliation": [
+      "上智大学 理工学部"
+    ],
+    "affiliation_en": [
+      "Faculty of Science and Technology, Sophia University"
+    ]
   }
 ]
