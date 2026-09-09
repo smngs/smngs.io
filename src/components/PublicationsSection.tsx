@@ -111,11 +111,14 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
       <ul>
         {(domestics as Domestic[]).map((dom, i) => {
           const text = (value: string) => (isEnglish ? hyphenate(value) : value);
+          // Empty means the note is deliberately dropped in this language, so
+          // its award link goes with it.
+          const note = localized<string | null | undefined>(dom, "note", lang);
           // Everything trailing the date goes in one parenthesis. On the
           // English page a talk given in Japanese says so there, since the
           // title above it is a translation rather than the published one.
           const aside = [
-            localized<string | undefined>(dom, "note", lang),
+            note,
             isEnglish && dom.lang === "ja" ? "in Japanese" : undefined,
           ].filter(Boolean);
 
@@ -135,12 +138,8 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
               {dom.reference && (
                 <ReferenceTooltip reference={localized(dom, "reference", lang)} />
               )}
-              {dom.note_url && (
-                <a
-                  href={dom.note_url}
-                  className="reference-icon"
-                  aria-label={localized<string | undefined>(dom, "note", lang) ?? "Reference"}
-                >
+              {dom.note_url && note && (
+                <a href={dom.note_url} className="reference-icon" aria-label={note}>
                   <FontAwesomeIcon icon={faNewspaper} />
                 </a>
               )}
