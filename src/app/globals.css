@@ -4,12 +4,6 @@
 @import "@fontsource/m-plus-1/500.css";
 @import "@fontsource/m-plus-1/700.css";
 
-:root {
-  /* Content width of the full-width nav/footer brand bars. */
-  --bar-max-w: 60rem;
-  --nav-height: 4rem;
-}
-
 body {
   margin: 0;
 }
@@ -34,160 +28,20 @@ html {
   text-size-adjust: 100%;
 }
 
-/* ===== Layout: Profile | Main | TOC ===== */
-.layout {
-  display: grid;
-  grid-template-columns: 1fr min(60rem, 100%) 1fr;
-  align-items: start;
-  overflow-x: clip;
+/* ===== Layout ===== */
+/* The three-column shell and its width are @smngs/ui's .smngs-layout.
+   The header and footer are their own full-width rows, so the centre column
+   carries the side gutters and the air above the first section. */
+.smngs-layout > .page {
+  padding: var(--space-6) var(--page-pad-x) 0;
 }
 
-/* The header is its own full-width grid row; align the side columns' top with
-   the main column's first section (which has space-6 of top padding). */
-.layout .sidebar-profile,
-.layout .smngs-toc {
+/* Align the TOC's top with the main column's first section. */
+.smngs-layout > .smngs-toc {
   margin-top: var(--space-6);
 }
 
-.layout .sidebar-profile {
-  grid-column: 1;
-  justify-self: center;
-}
-
-.layout .page {
-  grid-column: 2;
-  max-width: none;
-  margin: 0;
-  min-width: 0;
-  /* Header and footer are their own grid rows; this column needs side gutters
-     plus some breathing room above the first section. */
-  padding: var(--space-6) var(--space-5) 0;
-}
-
-.layout .smngs-toc {
-  grid-column: 3;
-  justify-self: center;
-}
-
-/* ===== Navbar Overrides ===== */
-/* Full-bleed brand bar pinned to the very top. The navbar is nested in the
-   centered .page column, so break out to the full viewport width; symmetric
-   padding re-centers the content at --bar-max-w (this build's @smngs/ui has no
-   inner wrapper, so we center via padding rather than a max-width child). */
-.smngs-navbar {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-header);
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-bottom: var(--space-5);
-  padding: var(--space-4) max(var(--space-5), calc(50vw - var(--bar-max-w) / 2));
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.smngs-navbar a[href] {
-  color: var(--color-white);
-  text-decoration: none;
-}
-.smngs-navbar a[href]:hover {
-  color: var(--color-white);
-}
-
-.smngs-navbar-title {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.smngs-navbar-links a {
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  padding: 0.3em 0.7em;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--ease-fast);
-}
-
-.smngs-navbar-links a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
-}
-
-.smngs-navbar-links a.active {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-.smngs-navbar .smngs-avatar {
-  background-color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.nav-title-text {
-  color: var(--color-white);
-  font-size: var(--text-sm);
-  font-weight: var(--font-semibold);
-}
-
-/* ===== Section Styles ===== */
-.section {
-  margin-bottom: var(--space-5);
-  scroll-margin-top: var(--space-8);
-}
-
-/* The brand bar (::before) on h1/h2 is now applied globally by @smngs/ui.
-   Extend coverage to .section > div > h2 which the library doesn't target. */
-.section > div > h2::before {
-  content: "";
-  display: inline-block;
-  width: 0.15em;
-  height: 0.9em;
-  margin-right: 0.4em;
-  background-color: var(--color-brand);
-  border-radius: 0.5em;
-  vertical-align: middle;
-  position: relative;
-  top: -0.1em;
-}
-
-.section > h1 {
-  margin-bottom: var(--space-3);
-}
-
-.section > h2,
-.section > div > h2 {
-  margin-bottom: var(--space-3);
-}
-
-.section > div[id] {
-  scroll-margin-top: var(--space-8);
-}
-
-/* ===== Hero Section ===== */
-.hero {
-  background-color: var(--color-brand);
-  color: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8) var(--space-7);
-  margin-bottom: var(--space-5);
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
-}
-
-.hero a {
-  color: var(--color-white);
-  text-decoration: none;
-}
-
-.hero-text { flex: 1; min-width: 0; }
-.hero .name { font-weight: var(--font-medium); font-size: var(--text-4xl); margin-bottom: 0.1em; }
-.hero .eng-name { font-size: var(--text-2xl); margin-bottom: var(--space-5); color: rgba(255, 255, 255, 0.85); }
-
-.hero .smngs-avatar {
-  background-color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
+/* ===== Hero content ===== */
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
@@ -229,14 +83,6 @@ html {
   display: block;
   width: 1.25rem;
   height: 1.25rem;
-}
-
-.hero-icon {
-  width: 8em;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background-color: var(--color-white);
-  flex-shrink: 0;
 }
 
 /* ===== Education ===== */
@@ -283,11 +129,6 @@ html {
   display: none;
 }
 
-
-/* Remove bottom margin from last child in sections to avoid double spacing */
-.section > *:last-child {
-  margin-bottom: 0;
-}
 
 /* ===== Publications ===== */
 .publications a {
@@ -409,17 +250,9 @@ html {
 }
 
 /* ===== Footer ===== */
-/* Full-bleed brand bar matching the navbar; content re-centered at --bar-max-w. */
-.site-footer {
+/* The band itself is @smngs/ui's; it only needs separating from the content. */
+.smngs-footer {
   margin-top: var(--space-6);
-  background-color: var(--color-brand);
-}
-.site-footer-inner {
-  max-width: var(--bar-max-w);
-  margin: 0 auto;
-  padding: var(--space-5);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: var(--text-sm);
 }
 
 /* ===== Blog List ===== */
@@ -433,93 +266,7 @@ html {
 .prose h1, .prose h2, .prose h3 { margin-top: var(--space-5); }
 .prose img { border-radius: var(--radius-md); }
 
-/* ===== Sidebar Profile ===== */
-.sidebar-profile {
-  position: sticky;
-  top: calc(var(--nav-height) + var(--space-5));
-  max-height: calc(100vh - calc(var(--space-8) * 2));
-  width: min(20rem, 100%);
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  text-align: left;
-  background: var(--color-surface);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-lg);
-}
-
-.sidebar-profile .smngs-avatar {
-  margin-bottom: var(--space-2);
-}
-
-.sidebar-profile-name {
-  font-size: var(--text-lg);
-  font-weight: var(--font-medium);
-  color: var(--color-text);
-}
-
-.sidebar-profile-eng-name {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  margin-bottom: var(--space-3);
-}
-
-.sidebar-profile-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3em;
-  width: 100%;
-}
-
-.sidebar-profile-links a {
-  display: grid;
-  grid-template-columns: 1.4rem 1fr;
-  gap: 0 0.6em;
-  align-items: start;
-  color: var(--color-muted);
-  text-decoration: none;
-  font-size: var(--text-sm);
-  padding: 0.4em 0.8em;
-  border-radius: var(--radius-sm);
-  transition: color var(--ease-fast), background-color var(--ease-fast);
-}
-
-.sidebar-profile-links a > svg {
-  width: 1.4rem;
-  height: 1.4rem;
-  margin-top: 0.3em;
-}
-
-.sidebar-profile-links a:hover {
-  color: var(--color-text);
-  background-color: var(--color-bg-code);
-}
-
-.sidebar-profile-handle {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--color-subtle);
-  font-weight: var(--font-normal);
-}
-
 /* ===== Responsive ===== */
-@media (max-width: 1800px) {
-  .layout {
-    grid-template-columns: 1fr min(60rem, 100%) 1fr;
-  }
-
-  .layout .smngs-toc,
-  .layout .sidebar-profile {
-    display: none;
-  }
-
-  .layout .page {
-    grid-column: 2;
-  }
-}
-
 @media (max-width: 768px) {
   /* Shrink the whole scale on phones through the root size alone: every token
      is in rem, so text, headings and spacing come down together and every
@@ -567,207 +314,29 @@ html {
   }
 
   /* Hero — hardcoded sizes */
-  .hero-icon {
-    width: 4em;
   }
-}
 
-/* ===== Site Header (navbar row + morphing hero) ===== */
-.site-header {
-  display: contents;
-}
-
-/* Navbar row: full-bleed brand bar pinned to the very top. */
-.header-bar {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-header);
-  background-color: var(--color-brand);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  padding: var(--space-4)
-    max(var(--space-5), calc(50vw - var(--bar-max-w) / 2 + var(--space-5)));
-  margin-bottom: var(--space-5);
-}
-/* On home the hero continues directly below the bar, so no gap there. */
-.site-header[data-home="true"] .header-bar {
-  margin-bottom: 0;
-}
-.header-brand {
-  display: inline-flex;
-  align-items: center;
-}
-/* Real in-flow avatars: they reserve the slots the desktop fly avatar morphs
-   between (hidden on desktop), and on mobile they are the visible avatars that
-   cross-fade. */
-.bar-avatar,
-.hero-avatar {
-  flex-shrink: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  background-color: var(--color-white);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  visibility: hidden;
-}
-.bar-avatar {
-  width: 2rem;
-  height: 2rem;
-}
-.hero-avatar {
-  width: 8rem;
-  height: 8rem;
-}
-.header-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-.header-links {
-  display: flex;
-  gap: var(--space-1);
-}
-.header-links a {
-  color: var(--color-white);
-  text-decoration: none;
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  padding: 0.3em 0.7em;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--ease-fast);
-}
-.header-links a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.header-links a.active {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-.theme-toggle,
-.header-hamburger {
-  background: transparent;
-  border: none;
-  color: var(--color-white);
-  cursor: pointer;
-  font-size: var(--text-lg);
-  line-height: 1;
-  padding: 0.3em 0.5em;
-  border-radius: var(--radius-sm);
-}
-.theme-toggle:hover,
-.header-hamburger:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.header-hamburger {
-  display: none;
-}
-.header-mobile-menu {
-  flex-basis: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  padding-top: var(--space-3);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-.header-mobile-menu a {
-  color: var(--color-white);
-  text-decoration: none;
-  padding: 0.5em 0.7em;
-  border-radius: var(--radius-sm);
-}
-
-/* Hero: full-bleed brand band directly under the navbar; scrolls away. */
-.header-hero {
-  box-sizing: border-box;
-  overflow: hidden;
-  background-color: var(--color-brand);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
-  /* Horizontal padding is static; the vertical padding collapses with the hero.
-     Padding is not compressible by max-height, so a static vertical padding
-     would leave a ~96px band lingering at p = 1 (visible as a broken slice when
-     stopped mid-scroll). Scaling it lets the band reach a true 0 height. */
-  padding-inline:
-    max(var(--space-5), calc(50vw - var(--bar-max-w) / 2 + var(--space-5)));
-  padding-top: calc((1 - var(--p, 0)) * var(--space-6));
-  padding-bottom: calc((1 - var(--p, 0)) * var(--space-8));
-  /* Collapse to nothing as p → 1 (driven by SiteHeader's scroll handler). */
-  max-height: calc((1 - var(--p, 0)) * var(--hero-max, 24rem));
-  margin-bottom: calc((1 - var(--p, 0)) * var(--space-5));
-}
-.header-hero-text {
-  flex: 1;
-  min-width: 0;
-}
-.header-hero-text .name {
+/* ===== Header hero content ===== */
+/* The band, its collapse and the avatar slots are @smngs/ui's NavbarHeader;
+   these are the name and buttons the site puts inside it. */
+.smngs-navbar-hero .name {
   font-weight: var(--font-medium);
   font-size: var(--text-4xl);
   margin-bottom: 0.1em;
 }
-.header-hero-text .eng-name {
+.smngs-navbar-hero .eng-name {
   font-size: var(--text-2xl);
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: var(--space-5);
 }
-.header-hero a {
-  color: var(--color-white);
-  text-decoration: none;
-}
-
-/* The single floating avatar that morphs between the two slots (positioned
-   each frame by SiteHeader). */
-.morph-avatar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: calc(var(--z-header) + 1);
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background-color: var(--color-white);
-  will-change: transform, width, height;
-}
-.morph-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
 @media (max-width: 768px) {
-  .header-links {
-    display: none;
-  }
-  .header-hamburger {
-    display: inline-flex;
-  }
   /* Matches the section h1s below the hero, so the name reads as the page's
      top-level heading rather than something smaller than the headings. */
-  .header-hero-text .name {
+  .smngs-navbar-hero .name {
     font-size: var(--text-3xl);
   }
-  .header-hero-text .eng-name {
+  .smngs-navbar-hero .eng-name {
     font-size: var(--text-lg);
-  }
-
-  /* Mobile: no fixed fly avatar (it drifts); cross-fade the real in-flow
-     avatars via opacity instead. */
-  .morph-avatar {
-    display: none;
-  }
-  .bar-avatar {
-    visibility: visible;
-    opacity: var(--p, 1);
-  }
-  .hero-avatar {
-    width: 4rem;
-    height: 4rem;
-    visibility: visible;
-    opacity: calc(1 - var(--p, 0));
   }
 }

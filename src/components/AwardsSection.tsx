@@ -6,7 +6,7 @@ import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
 
 export function AwardsSection() {
   return (
-    <div className="section publications" id="awards">
+    <div className="smngs-section publications" id="awards">
       <h1>Awards</h1>
       <ul>
         {awards.map((award, i) => {
