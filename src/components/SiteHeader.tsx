@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTheme } from "./ThemeProvider";
 import { NavbarThemeToggle } from "./UiClientExports";
 import { MailLink } from "./MailLink";
+import { GithubIcon, OrcidIcon, ResearchmapIcon, MailIcon } from "./ProfileIcons";
 
 const AVATAR = "https://github.com/smngs.png";
 
@@ -190,10 +191,33 @@ export function SiteHeader({ hasPosts }: { hasPosts: boolean }) {
             <div className="name">峯岸 聖太</div>
             <div className="eng-name">Shota Minegishi</div>
             <div className="hero-badges">
-              <a href="https://github.com/smngs" className="hero-badge">Github</a>
-              <a href="https://orcid.org/0009-0003-1426-2431" className="hero-badge">ORCID</a>
-              <a href="https://researchmap.jp/s_minegishi" className="hero-badge">Researchmap</a>
-              <MailLink className="hero-badge">Mail</MailLink>
+              <a
+                href="https://github.com/smngs"
+                className="hero-badge"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <GithubIcon />
+              </a>
+              <a
+                href="https://orcid.org/0009-0003-1426-2431"
+                className="hero-badge"
+                aria-label="ORCID"
+                title="ORCID"
+              >
+                <OrcidIcon />
+              </a>
+              <a
+                href="https://researchmap.jp/s_minegishi"
+                className="hero-badge"
+                aria-label="researchmap"
+                title="researchmap"
+              >
+                <ResearchmapIcon />
+              </a>
+              <MailLink className="hero-badge" ariaLabel="Mail" title="Mail">
+                <MailIcon />
+              </MailLink>
             </div>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
