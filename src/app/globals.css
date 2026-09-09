@@ -19,6 +19,19 @@ body {
    scrollY (which otherwise causes a collapse/expand flicker on mobile). */
 html {
   overflow-anchor: none;
+
+  /* Mobile browsers run a text-autosizing pass of their own whenever the page
+     is not at 100% — and the multiplier they pick is per block, derived from
+     its width, so a full-width run of body copy gets inflated while the text
+     in a narrow grid cell next to it does not, and sizes end up inverted.
+     Pinning this leaves our rem scale as the only thing deciding relative
+     sizes; the reader's zoom still scales the whole page, just uniformly.
+
+     Safari only implements the -webkit- form, and Lightning CSS drops that
+     prefix unless package.json declares a browserslist — so the browserslist
+     entry there is what makes this line reach iOS at all. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* ===== Layout: Profile | Main | TOC ===== */
@@ -275,6 +288,17 @@ html {
   padding-left: 1.5em;
 }
 
+/* Entries stay left-aligned, the way bibliographies are set. Justifying them
+   is what a print typesetter would do, but browsers break lines greedily
+   instead of optimising the whole paragraph, so in the narrow mobile column it
+   just opens up gaps between words. Hyphenation is what actually evens out the
+   right edge: English entries carry build-time soft hyphens (see
+   @/lib/hyphenate), and `manual` is the mode that breaks on those alone. */
+.publications li {
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
+
 .publications .author {
   font-weight: var(--font-bold);
 }
@@ -481,7 +505,31 @@ html {
 }
 
 @media (max-width: 768px) {
-  /* Layout — token overrides handle font/spacing automatically */
+  /* Shrink the whole scale on phones through the root size alone: every token
+     is in rem, so text, headings and spacing come down together and every
+     ratio between them is preserved. A percentage (not a px value) keeps this
+     relative to whatever default size the reader has set in their browser.
+
+     @smngs/ui also steps its heading and spacing tokens down at this
+     breakpoint, but only those — body copy keeps its size — which makes the
+     heading-to-body ratio differ between mobile and desktop. A reader zoomed
+     out far enough to cross 768px then sees the hierarchy shift, not just the
+     scale. Restoring the base values here leaves the root size as the single
+     mobile adjustment, so crossing the breakpoint changes how big everything
+     is and never how the elements relate to each other. */
+  :root {
+    font-size: 78.75%;
+
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+  }
 
   /* Education — layout change */
   .education-list {
@@ -682,8 +730,10 @@ html {
   .header-hamburger {
     display: inline-flex;
   }
+  /* Matches the section h1s below the hero, so the name reads as the page's
+     top-level heading rather than something smaller than the headings. */
   .header-hero-text .name {
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
   }
   .header-hero-text .eng-name {
     font-size: var(--text-lg);

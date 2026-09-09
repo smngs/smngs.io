@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^3.3.0",
     "@smngs/ui": "^0.5.0",
     "gray-matter": "^4.0.3",
+    "hyphen": "^1.14.1",
     "next": "16.2.1",
     "next-mdx-remote": "^6.0.0",
     "next-sitemap": "^4.2.3",
@@ -33,5 +34,11 @@
     "eslint-config-next": "16.2.1",
     "serve": "^14.2.6",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead"
+  ]
 }
