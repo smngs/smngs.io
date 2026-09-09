@@ -1,115 +1,236 @@
 [
   {
     "authors": [
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "分散型属性ベース暗号を適用した IPFS ビデオストリーミングのための局所性を考慮した経路情報配置手法",
+    "title_en": "A Consideration on Locality-Based Provider Record Placement Method for IPFS Video Streaming with Decentralized Attribute-Based Encryption",
     "url": "https://ken.ieice.org/ken/paper/20260731ycwD/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "presentation_format": null,
     "place": "大阪",
+    "place_en": "Osaka, Japan",
     "date": "2026-07-31",
-    "note": "発表予定"
+    "note": "発表予定",
+    "note_en": "to appear",
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "IPFS/HTTP ゲートウェイにおける動画セグメントの事前経路探索手法に関する検討",
+    "title_en": "A Consideration on Preemptive Content Routing Method for Video Segment in IPFS/HTTP Gateway",
     "url": "https://ken.ieice.org/ken/paper/202510090cNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "reference": "信学技報, vol. 125, no. 198, NS2025-98, pp. 65-68, 2025年10月.",
+    "reference_en": "IEICE Technical Report, vol. 125, no. 198, NS2025-98, pp. 65-68, Oct. 2025.",
     "presentation_format": null,
     "place": "京都",
-    "date": "2025-10-09"
+    "place_en": "Kyoto, Japan",
+    "date": "2025-10-09",
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "足立 匠", "me": false },
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "足立 匠",
+        "name_en": "Takumi Adachi",
+        "me": false
+      },
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "再生速度を考慮した階層符号化動画ストリーミングの検討",
+    "title_en": "A Study on Scalable Video Streaming Considering Playback Speed",
     "url": "https://ken.ieice.org/ken/paper/20251008jcNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "reference": "信学技報, vol. 125, no. 198, NS2025-89, pp. 26-29, 2025年10月.",
+    "reference_en": "IEICE Technical Report, vol. 125, no. 198, NS2025-89, pp. 26-29, Oct. 2025.",
     "presentation_format": null,
     "place": "京都",
-    "date": "2025-10-08"
+    "place_en": "Kyoto, Japan",
+    "date": "2025-10-08",
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "陶 辰麒", "me": false },
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "陶 辰麒",
+        "name_en": "Chenqi Tao",
+        "me": false
+      },
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "IoT におけるパケットレベル侵入検知システムの実装と評価",
+    "title_en": "Implementation and Evaluation of a Packet-Level Intrusion Detection System in IoT Networks",
     "url": "https://ken.ieice.org/ken/paper/20251010FcNU/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "reference": "信学技報, vol. 125, no. 198, NS2025-125, pp. 122-122, 2025年10月.",
+    "reference_en": "IEICE Technical Report, vol. 125, no. 198, NS2025-125, pp. 122-122, Oct. 2025.",
     "presentation_format": null,
     "place": "京都",
+    "place_en": "Kyoto, Japan",
     "date": "2025-10-10",
     "note": "はじめての研究会講演奨励賞",
-    "note_url": "https://www.ieice.org/cs/ns/jpn/hazimete-awards.html"
+    "note_en": "Encouragement Award for First-Time Presenters",
+    "note_url": "https://www.ieice.org/cs/ns/jpn/hazimete-awards.html",
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "IPFS 階層符号ビデオストリーミングにおけるコンテンツプリフェッチ",
+    "title_en": "A Consideration on Content Prefetching for IPFS Video Streaming with Scalable Video Coding",
     "url": "https://ken.ieice.org/ken/paper/20250124hcHw/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "reference": "信学技報, vol. 124, no. 344, NS2024-186, pp. 94-97, 2025年1月.",
+    "reference_en": "IEICE Technical Report, vol. 124, no. 344, NS2024-186, pp. 94-97, Jan. 2025.",
     "presentation_format": null,
     "place": "大阪",
+    "place_en": "Osaka, Japan",
     "date": "2025-01-24",
-    "note": "奨励講演, ネットワークシステム若手研究奨励賞"
+    "note": "奨励講演, ネットワークシステム若手研究奨励賞",
+    "note_en": "Encouragement Talk, Young Researcher's Award",
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "足立 匠", "me": false },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "足立 匠",
+        "name_en": "Takumi Adachi",
+        "me": false
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "階層符号化を用いた IPFS ビデオストリーミングにおけるコンテンツプリフェッチの性能評価",
+    "title_en": "Performance Evaluation of IPFS Video Streaming with Content Prefetching Using Scalable Video Coding",
     "url": "https://ken.ieice.org/ken/paper/20240718TcEF/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "reference": "信学技報, vol. 124, no. 106, NS2024-51, pp. 56-59, 2024年7月.",
+    "reference_en": "IEICE Technical Report, vol. 124, no. 106, NS2024-51, pp. 56-59, Jul. 2024.",
     "presentation_format": null,
     "place": "札幌",
+    "place_en": "Sapporo, Japan",
     "date": "2024-07-18",
-    "note": null
+    "note": null,
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "足立 匠", "me": false },
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "足立 匠",
+        "name_en": "Takumi Adachi",
+        "me": false
+      },
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "再生速度を考慮したアダプティブビデオストリーミング",
+    "title_en": "Adaptive Video Streaming Considering Playback Speed",
     "url": "https://ken.ieice.org/ken/paper/20240718zcEF/",
     "book_name": "電子情報通信学会 ネットワークシステム研究会",
+    "book_name_en": "IEICE Technical Committee on Network Systems (NS)",
     "reference": "信学技報, vol. 124, no. 106, NS2024-52, pp. 60-63, 2024年7月.",
+    "reference_en": "IEICE Technical Report, vol. 124, no. 106, NS2024-52, pp. 60-63, Jul. 2024.",
     "presentation_format": null,
     "place": "札幌",
+    "place_en": "Sapporo, Japan",
     "date": "2024-07-18",
-    "note": null
+    "note": null,
+    "lang": "ja"
   },
   {
     "authors": [
-      { "name": "峯岸 聖太", "me": true },
-      { "name": "萬代 雅希", "me": false }
+      {
+        "name": "峯岸 聖太",
+        "name_en": "Shota Minegishi",
+        "me": true
+      },
+      {
+        "name": "萬代 雅希",
+        "name_en": "Masaki Bandai",
+        "me": false
+      }
     ],
     "title": "経路情報のプリフェッチを適用した IPFS ビデオストリーミング",
+    "title_en": "IPFS Video Streaming with Route Information Prefetching",
     "url": "https://pub.confit.atlas.jp/ja/event/general2024/presentation/B-6-83",
     "book_name": "電子情報通信学会 総合大会",
+    "book_name_en": "The 2024 IEICE General Conference",
     "presentation_format": null,
     "place": "広島",
+    "place_en": "Hiroshima, Japan",
     "date": "2024-03-07",
-    "note": null
+    "note": null,
+    "lang": "ja"
   }
 ]
