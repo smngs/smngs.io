@@ -191,28 +191,44 @@ html {
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5em;
+  gap: 0.75rem;
   margin-top: var(--space-5);
 }
 
+/* Icon-only buttons, rounded to the same corner as the hero panel they sit on.
+   The fill is a darkened wash of the hero itself rather than the neutral grey
+   of --color-badge: grey chips read as a second, unrelated colour against the
+   brand panel, while a shade of the same hue keeps the header to one colour
+   and still puts enough contrast under the white glyphs. The label lives in
+   aria-label/title, since the mark alone names the destination for sighted
+   readers only. */
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
-  background-color: var(--color-badge);
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-lg);
+  background-color: rgba(0, 0, 0, 0.2);
   color: var(--color-white);
-  padding: 0.8em 0.8em;
-  font-size: var(--text-xs);
-  border-radius: var(--radius-sm);
-  font-weight: var(--font-semibold);
-  line-height: 1;
   text-decoration: none;
   transition: background-color var(--ease-fast);
 }
 
 .hero-badge:hover {
-  background-color: var(--color-badge-hover);
+  background-color: rgba(0, 0, 0, 0.34);
   color: var(--color-white);
+}
+
+.hero-badge:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.hero-badge svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .hero-icon {
