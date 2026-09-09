@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
+import { themeInitScript } from "@smngs/ui/theme-script";
 import Script from "next/script";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteToc } from "@/components/SiteToc";
-// import { SidebarProfile } from "@/components/SidebarProfile";
-import { Footer } from "@/components/Footer";
+import { Footer, ThemeProvider } from "@/components/UiClientExports";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -52,11 +51,7 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <head>
         <meta name="darkreader-lock" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();`,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {enableAnalytics && (
           <>
             <Script
@@ -77,14 +72,13 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <SiteHeader hasPosts={hasPosts} />
-          <div className="layout">
-            {/* <SidebarProfile /> */}
+          <div className="smngs-layout">
             <div className="page">
               <main>{children}</main>
             </div>
             <SiteToc />
           </div>
-          <Footer />
+          <Footer>Shota Minegishi</Footer>
         </ThemeProvider>
       </body>
     </html>

@@ -59,7 +59,7 @@ function AuthorList({ authors, conjunction }: { authors: Author[]; conjunction?:
 
 export function PublicationsSection() {
   return (
-    <div className="section publications" id="publications">
+    <div className="smngs-section publications" id="publications">
       <h1>Publications</h1>
 
       <div id="journal-papers"><h2>Journal Papers</h2></div>
