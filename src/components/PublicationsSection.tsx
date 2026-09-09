@@ -2,6 +2,7 @@ import journals from "../../data/journal.json";
 import conferences from "../../data/conference.json";
 import domestics from "../../data/domestic.json";
 import { formatToMonthYear, formatToMonthYearJP } from "@/lib/format";
+import { hyphenate } from "@/lib/hyphenate";
 import { ReferenceTooltip } from "./ReferenceTooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
@@ -58,24 +59,24 @@ function AuthorList({ authors, conjunction }: { authors: Author[]; conjunction?:
 
 export function PublicationsSection() {
   return (
-    <div className="section publications" id="publications">
+    <div className="smngs-section publications" id="publications">
       <h1>Publications</h1>
 
       <div id="journal-papers"><h2>Journal Papers</h2></div>
       <ul>
         {(journals as Journal[]).map((journal, i) => (
-          <li key={i}>
+          <li key={i} lang="en">
             <AuthorList authors={journal.authors} conjunction="and" />
             &ldquo;
             {journal.url ? (
-              <a href={journal.url}>{journal.title}</a>
+              <a href={journal.url}>{hyphenate(journal.title)}</a>
             ) : (
-              journal.title
+              hyphenate(journal.title)
             )}
-            &rdquo;, {journal.book_name}
+            &rdquo;, {hyphenate(journal.book_name)}
             {journal.bib_info && <>, {journal.bib_info}</>}
             {journal.date && <>, {formatToMonthYear(journal.date)}</>}
-            {journal.note ? <span> ({journal.note}).</span> : <span>.</span>}
+            {journal.note ? <span> ({hyphenate(journal.note)}).</span> : <span>.</span>}
           </li>
         ))}
       </ul>
@@ -83,14 +84,14 @@ export function PublicationsSection() {
       <div id="conference-proceedings"><h2>Conference Proceedings</h2></div>
       <ul>
         {conferences.map((conf, i) => (
-          <li key={i}>
+          <li key={i} lang="en">
             <AuthorList authors={conf.authors} conjunction="and" />
-            &ldquo;<a href={conf.url}>{conf.title}</a>&rdquo;,{" "}
-            {conf.book_name},{" "}
+            &ldquo;<a href={conf.url}>{hyphenate(conf.title)}</a>&rdquo;,{" "}
+            {hyphenate(conf.book_name)},{" "}
             {conf.presentation_format && <>{conf.presentation_format}, </>}
             {conf.place},{" "}
             {formatToMonthYear(conf.date)}
-            {conf.note ? <span> ({conf.note}).</span> : <span>.</span>}
+            {conf.note ? <span> ({hyphenate(conf.note)}).</span> : <span>.</span>}
           </li>
         ))}
       </ul>
@@ -98,7 +99,7 @@ export function PublicationsSection() {
       <div id="presentations"><h2>Presentations</h2></div>
       <ul>
         {(domestics as Domestic[]).map((dom, i) => (
-          <li key={i}>
+          <li key={i} lang="ja">
             <AuthorList authors={dom.authors} />
             &ldquo;<a href={dom.url}>{dom.title}</a>&rdquo;,{" "}
             {dom.book_name},{" "}

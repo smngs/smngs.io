@@ -6,7 +6,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <div className="section">
+      <div className="smngs-section">
         <h2>Blog</h2>
       </div>
       <div className="blog-list">
