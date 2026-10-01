@@ -34,6 +34,17 @@ type Journal = {
   note?: string;
 };
 
+type Conference = {
+  authors: Author[];
+  title: string;
+  url?: string;
+  book_name: string;
+  presentation_format: string | null;
+  place: string;
+  date: string;
+  note?: string | null;
+};
+
 function authorSeparator(index: number, total: number, conjunction?: string) {
   if (index === total - 1) return ", ";
   if (conjunction && index === total - 2) {
@@ -94,10 +105,16 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
 
       <div id="conference-proceedings"><h2>Conference Proceedings</h2></div>
       <ul>
-        {conferences.map((conf, i) => (
+        {(conferences as Conference[]).map((conf, i) => (
           <li key={i} lang="en">
             <AuthorList authors={conf.authors} conjunction="and" />
-            &ldquo;<a href={conf.url}>{hyphenate(conf.title)}</a>&rdquo;,{" "}
+            &ldquo;
+            {conf.url ? (
+              <a href={conf.url}>{hyphenate(conf.title)}</a>
+            ) : (
+              hyphenate(conf.title)
+            )}
+            &rdquo;,{" "}
             {hyphenate(conf.book_name)},{" "}
             {conf.presentation_format && <>{conf.presentation_format}, </>}
             {conf.place},{" "}
