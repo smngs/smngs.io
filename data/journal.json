@@ -5,6 +5,7 @@
       { "name": "Masaki Bandai", "me": false }
     ],
     "title": "Preemptive Content Routing Method for IPFS Video Streaming",
+    "url": "https://ieeexplore.ieee.org/document/11715999/",
     "book_name": "IEICE Transactions on Communications",
     "bib_info": "Vol.E110-B, No.3",
     "date": "2027-03",
@@ -17,6 +18,7 @@
       { "name": "Masaki Bandai", "me": false }
     ],
     "title": "Video Streaming with Temporal Scalability for User-Initiated Fast-Forward Playback",
+    "url": "https://ieeexplore.ieee.org/document/11715998/",
     "book_name": "IEICE Transactions on Communications",
     "bib_info": "Vol.E110-B, No.3",
     "date": "2027-03",

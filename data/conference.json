@@ -4,6 +4,18 @@
       { "name": "Shota Minegishi", "me": true },
       { "name": "Masaki Bandai", "me": false }
     ],
+    "title": "Prefix-Aligned Provider Record Placement for IPFS Adaptive Video Streaming with Decentralized Attribute-Based Encryption",
+    "book_name": "In Proc. of IEEE Consumer Communications & Networking Conference (CCNC 2027)",
+    "presentation_format": null,
+    "place": "Las Vegas, USA",
+    "date": "2027-01",
+    "note": "To appear"
+  },
+  {
+    "authors": [
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
     "title": "Content Prefetching Method for Scalable Video Coding in IPFS",
     "url": "https://ieeexplore.ieee.org/document/10930214",
     "book_name": "In Proc. of IEEE International Conference on Consumer Electronics (IEEE ICCE 2025)",
