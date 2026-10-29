@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
 import "./globals.css";
+import { CopyWithoutSoftHyphens } from "@/components/CopyWithoutSoftHyphens";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteToc } from "@/components/SiteToc";
 import { Footer, ThemeProvider } from "@/components/UiClientExports";
@@ -60,6 +61,7 @@ export function RootShell({
       </head>
       <body>
         <ThemeProvider>
+          <CopyWithoutSoftHyphens />
           <SiteHeader hasPosts={hasPosts} lang={lang} />
           <div className="smngs-layout">
             <div className="page">
