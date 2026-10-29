@@ -12,6 +12,9 @@ import { hyphenateSync } from "hyphen/en-us";
  * in server components, i.e. at build time, and ships no client-side JS.
  *
  * Short words are left alone: breaking them buys little and reads worse.
+ *
+ * The soft hyphens would travel with the text when it is copied, so
+ * <CopyWithoutSoftHyphens> strips them from the clipboard.
  */
 export function hyphenate(text: string): string {
   return hyphenateSync(text, { minWordLength: 7 });
