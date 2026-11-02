@@ -131,6 +131,11 @@ html {
 
 
 /* ===== Publications ===== */
+/* The brand bar from @smngs/ui stays on the section's h1 only. */
+.publications h2::before {
+  content: none;
+}
+
 .publications a {
   color: var(--color-text);
   text-decoration-color: var(--color-text);
