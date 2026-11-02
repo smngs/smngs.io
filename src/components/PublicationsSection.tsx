@@ -95,7 +95,7 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
             ) : (
               hyphenate(journal.title)
             )}
-            &rdquo;, {hyphenate(journal.book_name)}
+            ,&rdquo; {hyphenate(journal.book_name)}
             {journal.bib_info && <>, {journal.bib_info}</>}
             {journal.date && <>, {formatToMonthYear(journal.date)}</>}
             {journal.note ? <span> ({hyphenate(journal.note)}).</span> : <span>.</span>}
@@ -114,7 +114,7 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
             ) : (
               hyphenate(conf.title)
             )}
-            &rdquo;,{" "}
+            ,&rdquo;{" "}
             {hyphenate(conf.book_name)},{" "}
             {conf.presentation_format && <>{conf.presentation_format}, </>}
             {conf.place},{" "}
@@ -147,7 +147,7 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
                 lang={lang}
                 conjunction={isEnglish ? "and" : undefined}
               />
-              &ldquo;{dom.url ? <a href={dom.url}>{title}</a> : title}&rdquo;,{" "}
+              &ldquo;{dom.url ? <a href={dom.url}>{title}</a> : title},&rdquo;{" "}
               {text(localized(dom, "book_name", lang))},{" "}
               {dom.presentation_format && <>{dom.presentation_format}, </>}
               {localized(dom, "place", lang)},{" "}
