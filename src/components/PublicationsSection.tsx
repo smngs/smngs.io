@@ -13,7 +13,7 @@ type Author = { name: string; me: boolean };
 type Domestic = {
   authors: Author[];
   title: string;
-  url: string;
+  url?: string;
   book_name: string;
   presentation_format: string | null;
   place: string;
@@ -128,6 +128,7 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
       <ul>
         {(domestics as Domestic[]).map((dom, i) => {
           const text = (value: string) => (isEnglish ? hyphenate(value) : value);
+          const title = text(localized(dom, "title", lang));
           // Empty means the note is deliberately dropped in this language, so
           // its award link goes with it.
           const note = localized<string | null | undefined>(dom, "note", lang);
@@ -146,7 +147,7 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
                 lang={lang}
                 conjunction={isEnglish ? "and" : undefined}
               />
-              &ldquo;<a href={dom.url}>{text(localized(dom, "title", lang))}</a>&rdquo;,{" "}
+              &ldquo;{dom.url ? <a href={dom.url}>{title}</a> : title}&rdquo;,{" "}
               {text(localized(dom, "book_name", lang))},{" "}
               {dom.presentation_format && <>{dom.presentation_format}, </>}
               {localized(dom, "place", lang)},{" "}
