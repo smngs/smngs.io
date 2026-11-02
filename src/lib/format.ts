@@ -7,8 +7,10 @@ export function formatToMonthYear(dateStr: string): string {
 
   const month = parts.find((p) => p.type === "month")?.value;
   const year = parts.find((p) => p.type === "year")?.value;
+  const fullMonth = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 
-  return `${month}. ${year}`;
+  // The period marks an abbreviation, so "May" goes without one.
+  return month === fullMonth ? `${month} ${year}` : `${month}. ${year}`;
 }
 
 export function formatToMonthYearJP(dateStr: string): string {
