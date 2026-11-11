@@ -5,7 +5,19 @@
       { "name": "Masaki Bandai", "me": false }
     ],
     "title": "Prefix-Aligned Provider Record Placement for IPFS Adaptive Video Streaming with Decentralized Attribute-Based Encryption",
-    "book_name": "In Proc. of IEEE Consumer Communications and Networking Conference (CCNC 2027)",
+    "book_name": "Proc. of IEEE Consumer Communications and Networking Conference (CCNC 2027)",
+    "presentation_format": null,
+    "place": "Las Vegas, USA",
+    "date": "2027-01",
+    "note": "To appear"
+  },
+  {
+    "authors": [
+      { "name": "Shota Minegishi", "me": true },
+      { "name": "Masaki Bandai", "me": false }
+    ],
+    "title": "SVC-Aware Merkle DAG Grouping for Provider Record Reduction in IPFS Video Streaming",
+    "book_name": "Proc. of IEEE Consumer Communications and Networking Conference (CCNC 2027), Workshop on Digital Sustainability for Consumer Applications: Innovations in Communications and Networking (DiSCA)",
     "presentation_format": null,
     "place": "Las Vegas, USA",
     "date": "2027-01",
@@ -18,7 +30,7 @@
     ],
     "title": "Content Prefetching Method for Scalable Video Streaming in IPFS",
     "url": "https://ieeexplore.ieee.org/document/10930214",
-    "book_name": "In Proc. of IEEE International Conference on Consumer Electronics (ICCE 2025)",
+    "book_name": "Proc. of IEEE International Conference on Consumer Electronics (ICCE 2025)",
     "presentation_format": null,
     "place": "Las Vegas, USA",
     "date": "2025-01-13",
@@ -31,7 +43,7 @@
     ],
     "title": "Evaluation of Prefetching Method for Routing Information in IPFS Video Streaming",
     "url": "https://www.ieice.org/publications/proceedings/summary.php?iconf=ICETC&session_num=P2&number=P2-17&year=2024",
-    "book_name": "In Proc. of IEICE International Conference on Emerging Technologies for Communications (ICETC 2024)",
+    "book_name": "Proc. of IEICE International Conference on Emerging Technologies for Communications (ICETC 2024)",
     "presentation_format": "Poster",
     "place": "Kitakyushu, Japan",
     "date": "2024-11-25",

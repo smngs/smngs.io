@@ -115,7 +115,7 @@ export function PublicationsSection({ lang }: { lang: Lang }) {
               hyphenate(conf.title)
             )}
             ,&rdquo;{" "}
-            {hyphenate(conf.book_name)},{" "}
+            in {hyphenate(conf.book_name)},{" "}
             {conf.presentation_format && <>{conf.presentation_format}, </>}
             {conf.place},{" "}
             {formatToMonthYear(conf.date)}
